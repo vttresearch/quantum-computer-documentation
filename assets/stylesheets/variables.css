@@ -1,0 +1,26 @@
+:root {
+    /* Variables from the VTT brand image: */
+    /* --vtt-font-family: 'Helvetica Neue', sans-serif; */
+    --vtt-font-family: 'Arial', sans-serif;
+
+    /* Primary colours*/
+    --vtt-orange: #f06e00;
+    --vtt-blue: #005794;
+    --vtt-dark-grey: #afafaf;
+    --vtt-white: #ffffff;
+    --vtt-black: #050505;
+
+    /* Secondary colours */
+    --vtt-yellow: #ffdc0f;
+    --vtt-light-grey: #dbdbdb;
+    --vtt-green: #115532;
+
+    --vtt-light-orange: #FBB87E;
+    --vtt-light-blue: #80ABC9;
+    --vtt-light-dark-grey: #D7D7D7;
+    --vtt-light-yellow: #FEED88;
+    --vtt-light-light-grey: #EDEDED;
+    --vtt-light-green: #88AA98;
+
+
+}
