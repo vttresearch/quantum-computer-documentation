@@ -1,0 +1,66 @@
+site_name: VTT Quantum Computer Documentation
+site_description: Instructions and user guides for commercial usage of VTT's Quantum Computers including FAQ and tutorials
+
+# Repository
+site_url: "https://vttresearch.github.io/quantum-computer-documentation/"
+
+site_author: VTT Technical Research Centre of Finland Ltd. 2023
+copyright: © VTT Technical Research Centre of Finland Ltd. 2023. All rights reserved.
+nav:
+  - Welcome: index.md
+  - Helmi Quantum Computer: helmi.md
+  - Accessing LUMI: lumi.md
+  - Examples:
+    - examples/index.md
+    - Introduction to Helmi with Qiskit: examples/intro-to-helmi-qiskit.ipynb
+    - Introduction to Helmi with Cirq: examples/intro-to-helmi-cirq.ipynb
+  - Running on Helmi: running.md
+  - Limitations: limitations.md
+  - Calibration: calibration.md
+  - FAQ: faq.md
+  - Support: support.md
+theme:
+  name: material
+  language: en
+  custom_dir: overrides
+  logo: assets/logo.png
+  favicon: assets/favicon.ico
+  icon:
+    repo: material/github
+
+  palette:
+    scheme: vtt
+
+  features:
+    - content.code.copy
+    - navigation.footer
+
+
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - assets/stylesheets/variables.css
+  - assets/stylesheets/scheme.css
+
+plugins:
+    - search
+    - mkdocs-jupyter
+    - section-index
+
+markdown_extensions:
+  - footnotes
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
