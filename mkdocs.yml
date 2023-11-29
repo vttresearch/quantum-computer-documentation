@@ -47,7 +47,8 @@ extra_css:
 
 plugins:
     - search
-    - mkdocs-jupyter
+    - mkdocs-jupyter:
+          include_source: True
     - section-index
 
 markdown_extensions:
