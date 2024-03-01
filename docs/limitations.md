@@ -9,7 +9,7 @@ There are a number of limitations on Helmi that need to be taken into account wh
 
 **Queue length**
 
-To ensure manageable wait times, the job queue can accommodate up to **100 concurrent jobs**.
+To ensure manageable wait times, the job queue can accommodate up to **100 sequential jobs**.
 Jobs when the queue reached its limit will be denied, triggering the following error message from the IQM client:
 
 ```bash
