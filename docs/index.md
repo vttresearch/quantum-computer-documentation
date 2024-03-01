@@ -10,7 +10,7 @@ This website contains the technical documentation about VTT's Quantum Computers 
 - Companies can get access to Helmi [here](https://www.vttresearch.com/en/ourservices/quantum-computing).
 - Academic researchers can get access to Helmi by following the instructions [here](https://fiqci.fi/_posts/2022-11-01-Helmi-pilot/).
 
-Once you have a project, the next steps can be found on the [Accessing LUMI](lumi.md) page.
+Once a [My CSC](https://my.csc.fi/login) project has been created for you, the next steps can be found on the [Accessing LUMI](lumi.md) page.
 
 ## Additional links
 
