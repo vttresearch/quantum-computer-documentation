@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.12">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.10ba22f1.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -450,11 +450,26 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#figures-of-merit" class="md-nav__link">
+  <a href="#quality-metrics-set" class="md-nav__link">
     <span class="md-ellipsis">
-      Figures of Merit
+      Quality metrics set
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Quality metrics set">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example response
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -540,11 +555,26 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#figures-of-merit" class="md-nav__link">
+  <a href="#quality-metrics-set" class="md-nav__link">
     <span class="md-ellipsis">
-      Figures of Merit
+      Quality metrics set
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Quality metrics set">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example response
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -587,10 +617,10 @@
 <li>Adjusts qubit drive frequency, amplitude fine-tuning and readout threshold</li>
 <li>Measures <span class="arithmatex">\(T_1\)</span>, <span class="arithmatex">\(T_2\)</span>, <span class="arithmatex">\(T_2^*\)</span>, readout accuracy, single- and two-qubit gate fidelities</li>
 </ul>
-<h3 id="figures-of-merit">Figures of Merit</h3>
-<p>The benchmarks results are summarized in the <em>calibration set</em> representing the figures of merit and reflecting the latest state of the quantum computer. The calibration set can be fetched from Helmi's API. An example script is provided <a href="https://github.com/FiQCI/helmi-examples/blob/main/scripts/get_calibration_data.py">here</a>. Each calibration set is identified via a unique ID.
-A new calibration set ID is created after each calibration. Note, that not all metrics are updated after each calibration run. We recommend to save the current calibration set ID together with the job ID to facilitate debugging and analysis.</p>
-<p>The metrics contained in the calibration set are summarized below:</p>
+<p>A calibration sequence produces what is called a <code>calibration_set</code>. This is a set of device parameters, which the quantum computer is currently using to execute quantum circuits. It is identified via a <code>calibration_set_id</code>, a unique identifier for the specific <code>calibration_set</code>. Usually, when submitting quantum circuits, the most up-to-date calibration set is used, however, it is possible to use a specific <code>calibration_set_id</code>. This can be useful for testing the degradation of the performance of our quantum computers.</p>
+<h3 id="quality-metrics-set">Quality metrics set</h3>
+<p>The benchmarks results are summarized in the <em>quality metric set</em> representing the figures of merit and reflecting the latest state of the quantum computer. The calibration metrics can be fetched from Helmi's API by sending HTTP <code>GET</code> requests to <code>/calibration/metrics/latest</code>. An example script is provided <a href="https://github.com/FiQCI/helmi-examples/blob/main/scripts/get_calibration_data.py">here</a>. Each quality metrics set is identified via a unique ID, with a new ID created after each calibration. Note, that not all metrics are updated after each calibration run. We recommend to save the current calibration set ID together with the job ID to facilitate debugging and analysis. Also note that it can happen that there is a delay of up to 10 minutes between calibrating the device and benchmarking the quality metrics set, causing there to be some delay in presenting the quality metrics data.</p>
+<p>The metrics contained in the quality metrics set are summarized below:</p>
 <table>
 <thead>
 <tr>
@@ -639,6 +669,27 @@ A new calibration set ID is created after each calibration. Note, that not all m
 </table>
 <p>These metrics provide critical insights into the operational efficiency, error rates, and coherence properties of Helmi.
 Understanding these figures of merit allows a user to make informed decisions on transpilation strategies and qubit selection, optimizing for circuit depth or fidelity.</p>
+<h4 id="example-response">Example response</h4>
+<p>Here is an example response from Helmi's API for the calibration and quality metrics set</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;calibration_set_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;03436204-3588-4567-95ec-5a61acfd227d&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;quality_metric_set_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ec1298a0-43ce-43f2-b6d1-10c1fe750786&quot;</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">&quot;metrics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">&quot;QB1.fidelity_1qb_gates_averaged&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.9971526901996984&quot;</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">      </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">      </span><span class="nt">&quot;uncertainty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5.622242981254397e-05&quot;</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">      </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-03-20T05:05:08.109836&quot;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nt">&quot;TC-3-5.cz_gate_fidelity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.9848983187049354&quot;</span><span class="p">,</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">      </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">      </span><span class="nt">&quot;uncertainty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.002603321013490276&quot;</span><span class="p">,</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">      </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-03-20T05:05:08.109836&quot;</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="p">}</span>
+</span></code></pre></div>
 
 
 
@@ -699,7 +750,7 @@ Understanding these figures of merit allows a user to make informed decisions on
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.footer"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      <script src="../assets/javascripts/bundle.bd41221c.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
