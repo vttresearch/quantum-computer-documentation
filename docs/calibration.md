@@ -20,7 +20,7 @@ To minimize the impact of calibration on user operations, we execute shorter cal
 - Adjusts qubit drive frequency, amplitude fine-tuning and readout threshold
 - Measures $T_1$, $T_2$, $T_2^*$, readout accuracy, single- and two-qubit gate fidelities
 
-A calibration sequence produces what is called a `calibration_set`. This is a set of device parameters, which the quantum computing is currently using to execute quantum circuits. It is identified via a `calibration_set_id`, a unique identifier for the specific `calibration_set`. Usually, when submitting quantum circuits, the most up-to-date calibration set is used, however, it is possible to use a specific `calibration_set_id`. This can be useful for testing the degradation of the performance of our quantum computers.
+A calibration sequence produces what is called a `calibration_set`. This is a set of device parameters, which the quantum computer is currently using to execute quantum circuits. It is identified via a `calibration_set_id`, a unique identifier for the specific `calibration_set`. Usually, when submitting quantum circuits, the most up-to-date calibration set is used, however, it is possible to use a specific `calibration_set_id`. This can be useful for testing the degradation of the performance of our quantum computers.
 
 ### Quality metrics set
 
