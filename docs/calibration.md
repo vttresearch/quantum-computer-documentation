@@ -20,12 +20,13 @@ To minimize the impact of calibration on user operations, we execute shorter cal
 - Adjusts qubit drive frequency, amplitude fine-tuning and readout threshold
 - Measures $T_1$, $T_2$, $T_2^*$, readout accuracy, single- and two-qubit gate fidelities
 
-### Figures of Merit
+A calibration sequence produces what is called a `calibration_set`. This is a set of device parameters, which the quantum computer is currently using to execute quantum circuits. It is identified via a `calibration_set_id`, a unique identifier for the specific `calibration_set`. Usually, when submitting quantum circuits, the most up-to-date calibration set is used, however, it is possible to use a specific `calibration_set_id`. This can be useful for testing the degradation of the performance of our quantum computers.
 
-The benchmarks results are summarized in the *calibration set* representing the figures of merit and reflecting the latest state of the quantum computer. The calibration set can be fetched from Helmi's API. An example script is provided [here](https://github.com/FiQCI/helmi-examples/blob/main/scripts/get_calibration_data.py). Each calibration set is identified via a unique ID.
-A new calibration set ID is created after each calibration. Note, that not all metrics are updated after each calibration run. We recommend to save the current calibration set ID together with the job ID to facilitate debugging and analysis.
+### Quality metrics set
 
-The metrics contained in the calibration set are summarized below:
+The benchmarks results are summarized in the *quality metric set* representing the figures of merit and reflecting the latest state of the quantum computer. The calibration metrics can be fetched from Helmi's API by sending HTTP `GET` requests to `/calibration/metrics/latest`. An example script is provided [here](https://github.com/FiQCI/helmi-examples/blob/main/scripts/get_calibration_data.py). Each quality metrics set is identified via a unique ID, with a new ID created after each calibration. Note, that not all metrics are updated after each calibration run. We recommend to save the current calibration set ID together with the job ID to facilitate debugging and analysis. Also note that it can happen that there is a delay of up to 10 minutes between calibrating the device and benchmarking the quality metrics set, causing there to be some delay in presenting the quality metrics data.
+
+The metrics contained in the quality metrics set are summarized below:
 
 | Metric                       | Description                                                                                                                                                                                                              |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -41,3 +42,28 @@ The metrics contained in the calibration set are summarized below:
 
 These metrics provide critical insights into the operational efficiency, error rates, and coherence properties of Helmi.
 Understanding these figures of merit allows a user to make informed decisions on transpilation strategies and qubit selection, optimizing for circuit depth or fidelity.
+
+#### Example response
+
+Here is an example response from Helmi's API for the calibration and quality metrics set
+
+```json
+{
+  "calibration_set_id": "03436204-3588-4567-95ec-5a61acfd227d",
+  "quality_metric_set_id": "ec1298a0-43ce-43f2-b6d1-10c1fe750786",
+  "metrics": {
+    "QB1.fidelity_1qb_gates_averaged": {
+      "value": "0.9971526901996984",
+      "unit": "",
+      "uncertainty": "5.622242981254397e-05",
+      "timestamp": "2024-03-20T05:05:08.109836"
+    },
+    "TC-3-5.cz_gate_fidelity": {
+      "value": "0.9848983187049354",
+      "unit": "",
+      "uncertainty": "0.002603321013490276",
+      "timestamp": "2024-03-20T05:05:08.109836"
+    }
+  }
+}
+```
