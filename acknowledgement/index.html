@@ -12,13 +12,11 @@
         <meta name="author" content="VTT Technical Research Centre of Finland Ltd. 2024">
       
       
-        <link rel="canonical" href="https://vttresearch.github.io/quantum-computer-documentation/lumi/">
+        <link rel="canonical" href="https://vttresearch.github.io/quantum-computer-documentation/acknowledgement/">
       
       
-        <link rel="prev" href="../helmi/">
+        <link rel="prev" href="../support/">
       
-      
-        <link rel="next" href="../examples/">
       
       
       <link rel="icon" href="../assets/favicon.ico">
@@ -26,7 +24,7 @@
     
     
       
-        <title>Accessing LUMI - VTT Quantum Computer Documentation</title>
+        <title>Acknowledgment - VTT Quantum Computer Documentation</title>
       
     
     
@@ -80,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#accessing-lumi" class="md-skip">
+        <a href="#acknowledgement" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Accessing LUMI
+              Acknowledgment
             
           </span>
         </div>
@@ -246,30 +244,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Accessing LUMI
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../lumi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -278,68 +256,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#storage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Storage
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuring-the-environment" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configuring the environment
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuring the environment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#using-a-custom-python-environment" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using a custom Python environment
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#submitting-jobs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Submitting jobs
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -540,10 +456,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../acknowledgement/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Acknowledgment
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -552,6 +488,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-cite-vtt-q5-helmi-in-an-academic-paper" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to cite VTT Q5 "Helmi" in an academic paper?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-reference-helmi-in-publications-or-presentations" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to reference Helmi in publications or presentations
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -574,62 +548,20 @@
                   
 
 
-<h1 id="accessing-lumi">Accessing LUMI</h1>
-<p>Before accessing LUMI you need to be added to a project in <a href="https://my.csc.fi/">My CSC</a> with your CSC account. Access to LUMI is currently only through the command line interface, with access provided over SSH. Users using LUMI should have some experience with the Linux command line and familiarity with HPC systems. To log on to LUMI, you will first need to add your ssh key on your <a href="https://my.csc.fi/">My CSC</a> profile section.</p>
-<p>The LUMI documentation offers a <a href="https://docs.lumi-supercomputer.eu/firststeps/SSH-keys/">guide</a> for creating SSH keypairs from which you should follow the instructions labeled "With a Finnish allocation".</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>It might take a couple of hours until your public key is distributed to all LUMI nodes.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The private key should never be shared with anyone. It should only be stored on your local computer. Otherwise, anyone can steal the SSH key and impersonate you.</p>
-</div>
-<p>Once your public SSH key is available on all login nodes, you can access LUMI using</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>&lt;path-to-private-key&gt;<span class="w"> </span>&lt;username&gt;@lumi.csc.fi
-</span></code></pre></div>
-<p>The LUMI <a href="https://docs.lumi-supercomputer.eu/firststeps/loggingin/">documentation</a> provides further information on how to connect to LUMI. For an introduction to LUMI, its architecture, modules and software stack, take a look at the <a href="https://lumi-supercomputer.github.io/LUMI-training-materials/1day-20230921/#downloads">LUMI training materials</a>.</p>
-<h2 id="storage">Storage</h2>
-<p>LUMI uses a Linux based parallel filesystem, utilising <a href="https://www.lustre.org/">lustre</a>. Access to differents parts of the file system are based on the projects you are associated with. LUMI's storage areas and their intended use cases are described <a href="https://docs.lumi-supercomputer.eu/storage/">here</a>.</p>
-<h2 id="configuring-the-environment">Configuring the environment</h2>
-<p>To run quantum circuits on LUMI we need to load certain Python modules. Dependencies are managed via <a href="https://curc.readthedocs.io/en/latest/compute/modules.html"><code>modules</code></a>, which can be loaded.</p>
-<p>To load the required modules, after connecting to LUMI, run the following lines in your terminal</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>module<span class="w"> </span>use<span class="w"> </span>/appl/local/quantum/modulefiles
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>module<span class="w"> </span>load<span class="w"> </span>helmi_qiskit<span class="w">  </span><span class="c1"># or helmi_cirq</span>
-</span></code></pre></div>
-<p>This commands can also be added to your <code>.bashrc</code> to save repetition. In case you are curious, you can explore other available modules via <code>module avail</code>.</p>
-<h3 id="using-a-custom-python-environment">Using a custom Python environment</h3>
-<p>Loading <code>helmi_qiskit</code> or <code>helmi_cirq</code> on LUMI comes with a preconfigured Python environment for submitting jobs to Helmi. This environment can be replicated by users, by following the <a href="https://docs.lumi-supercomputer.eu/software/installing/python/#installing-python-packages">LUMI documentation on installing python packages</a>. To access Helmi you will still need to load the <code>helmi_standard</code> module.</p>
-<p><center></p>
-<table>
-<thead>
-<tr>
-<th>Package</th>
-<th>Version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://pypi.org/project/iqm-client/">iqm-client </a></td>
-<td>&gt;=15.2 &lt; 16.0</td>
-</tr>
-<tr>
-<td><a href="https://pypi.org/project/qiskit-iqm/">qiskit-iqm</a></td>
-<td>&gt;=11.10 &lt; 12.0</td>
-</tr>
-<tr>
-<td><a href="https://pypi.org/project/qiskit-iqm/">cirq-iqm</a></td>
-<td>&gt;=12.2 &lt; 13.0</td>
-</tr>
-</tbody>
-</table>
-<p></center></p>
-<p>Newer versions of the above Python packages can be installed and may work with Helmi, however these are currently unsupported and may lead to errors.</p>
-<p>As an alternative to the above, Python packages can be installed on top of <code>helmi_qiskit</code> or <code>helmi_cirq</code> into the Python user install directory by specifying <code>python -m pip install --user whatsapp</code>. This, however, may lead to increased dependency conflicts.</p>
-<!-- Once LUMI uses a conda based tykky env we can recommend to users to create a virtual env with the --system-site-packages flag -->
-
-<h2 id="submitting-jobs">Submitting jobs</h2>
-<p>Once you have access to LUMI and have configured your environment you can learn how to run jobs on Helmi with the <a href="../running/">Running on Helmi</a>.</p>
+<h1 id="acknowledgement">Acknowledgement</h1>
+<h2 id="how-to-cite-vtt-q5-helmi-in-an-academic-paper">How to cite VTT Q5 "Helmi" in an academic paper?</h2>
+<p>When publishing the results that utilise Helmi, users should acknowledge the use of Helmi and VTT, preferably in the format: "These [results] have been acquired by VTT's quantum computer Helmi.". Users can use either "Helmi" or "VTT Q5" when referring to the quantum computer.</p>
+<p>Users can cite this webpage when referring to technical details of Helmi. For example</p>
+<blockquote>
+<p><a href="https://vttresearch.github.io/quantum-computer-documentation/helmi/">VTT Quantum Computer Documentation</a> (2024)</p>
+</blockquote>
+<h2 id="how-to-reference-helmi-in-publications-or-presentations">How to reference Helmi in publications or presentations</h2>
+<p>When referencing Helmi in publications or presentations you can refer to this technical documentation. Images contained in this documentation are <a href="https://creativecommons.org/licenses/by/4.0/">licensed under creative commons CC BY 4.0</a>.</p>
+<p>Additionally, you can refer to Helmi with the following links:</p>
+<ul>
+<li><a href="https://www.vttresearch.com/en/ourservices/quantum-computing">https://www.vttresearch.com/en/ourservices/quantum-computing</a></li>
+<li><a href="https://www.vttresearch.com/en/news-and-ideas/finland-opens-quantum-computer-research-purposes-fusion-quantum-computing-and">https://www.vttresearch.com/en/news-and-ideas/finland-opens-quantum-computer-research-purposes-fusion-quantum-computing-and</a></li>
+</ul>
 
 
 
