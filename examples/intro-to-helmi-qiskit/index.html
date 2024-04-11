@@ -509,6 +509,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visualize_quality_metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visualizing Quality Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1166,16 +1187,16 @@ PennyLane-qiskit @ git+https://github.com/NordIQuEst/pennylane-qiskit@support-nu
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">iqm.qiskit_iqm</span> <span class="kn">import</span> <span class="n">IQMProvider</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">iqm.qiskit_iqm</span> <span class="kn">import</span> <span class="n">IQMProvider</span>
 <span class="kn">from</span> <span class="nn">iqm.qiskit_iqm.iqm_transpilation</span> <span class="kn">import</span> <span class="n">optimize_single_qubit_gates</span>
-<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">execute</span><span class="p">,</span> <span class="n">transpile</span>
 <span class="kn">from</span> <span class="nn">qiskit.tools.monitor</span> <span class="kn">import</span> <span class="n">job_monitor</span>
 <span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-1">from iqm.qiskit_iqm import IQMProvider
+<div class="clipboard-copy-txt" id="cell-1">import networkx as nx
+from iqm.qiskit_iqm import IQMProvider
 from iqm.qiskit_iqm.iqm_transpilation import optimize_single_qubit_gates
-import networkx as nx
 from qiskit import QuantumCircuit, QuantumRegister, execute, transpile
 from qiskit.tools.monitor import job_monitor
 from qiskit.visualization import plot_histogram</div>
@@ -1254,13 +1275,13 @@ backend = provider.get_backend()</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Native operations: </span><span class="si">{</span><span class="n">backend</span><span class="o">.</span><span class="n">operation_names</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Number of qubits: </span><span class="si">{</span><span class="n">backend</span><span class="o">.</span><span class="n">num_qubits</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Coupling map: </span><span class="si">{</span><span class="n">backend</span><span class="o">.</span><span class="n">coupling_map</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Native operations: </span><span class="si">{</span><span class="n">backend</span><span class="o">.</span><span class="n">operation_names</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Number of qubits: </span><span class="si">{</span><span class="n">backend</span><span class="o">.</span><span class="n">num_qubits</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Coupling map: </span><span class="si">{</span><span class="n">backend</span><span class="o">.</span><span class="n">coupling_map</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-3">print(f'Native operations: {backend.operation_names}')
-print(f'Number of qubits: {backend.num_qubits}')
-print(f'Coupling map: {backend.coupling_map}')</div>
+<div class="clipboard-copy-txt" id="cell-3">print(f"Native operations: {backend.operation_names}")
+print(f"Number of qubits: {backend.num_qubits}")
+print(f"Coupling map: {backend.coupling_map}")</div>
 </div>
 </div>
 </div>
@@ -1299,12 +1320,12 @@ print(f'Coupling map: {backend.coupling_map}')</div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
 <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">coupling_map</span><span class="p">)</span>
 <span class="n">node_labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"QB</span><span class="si">{</span><span class="n">node</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">}</span>
-<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">node_labels</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">'skyblue'</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">node_labels</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s2">"skyblue"</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-4">G = nx.Graph()
 G.add_edges_from(backend.coupling_map)
 node_labels = {node: f"QB{node + 1}" for node in G.nodes}
-nx.draw(G, labels=node_labels, node_color='skyblue', node_size=500, font_size=10)</div>
+nx.draw(G, labels=node_labels, node_color="skyblue", node_size=500, font_size=10)</div>
 </div>
 </div>
 </div>
@@ -1340,17 +1361,17 @@ nx.draw(G, labels=node_labels, node_color='skyblue', node_size=500, font_size=10
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Bell pair circuit'</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Bell pair circuit"</span><span class="p">)</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">'mpl'</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s2">"mpl"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-5">circuit = QuantumCircuit(2, name='Bell pair circuit')
+<div class="clipboard-copy-txt" id="cell-5">circuit = QuantumCircuit(2, name="Bell pair circuit")
 circuit.h(0)
 circuit.cx(0, 1)
 circuit.measure_all()
-circuit.draw(output='mpl')</div>
+circuit.draw(output="mpl")</div>
 </div>
 </div>
 </div>
@@ -1430,9 +1451,23 @@ job_monitor(job)</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># job = execute(circuit, backend, shots=100, calibration_set_id="c5a5e2d1-100b-42d4-a4fd-a49edfb9d176", circuit_duration_check=True, heralding_mode="zeros")</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># job = execute(</span>
+<span class="c1">#     circuit,</span>
+<span class="c1">#     backend,</span>
+<span class="c1">#     shots=100,</span>
+<span class="c1">#     calibration_set_id="c5a5e2d1-100b-42d4-a4fd-a49edfb9d176",</span>
+<span class="c1">#     circuit_duration_check=True,</span>
+<span class="c1">#     heralding_mode="zeros",</span>
+<span class="c1"># )</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-7"># job = execute(circuit, backend, shots=100, calibration_set_id="c5a5e2d1-100b-42d4-a4fd-a49edfb9d176", circuit_duration_check=True, heralding_mode="zeros")</div>
+<div class="clipboard-copy-txt" id="cell-7"># job = execute(
+#     circuit,
+#     backend,
+#     shots=100,
+#     calibration_set_id="c5a5e2d1-100b-42d4-a4fd-a49edfb9d176",
+#     circuit_duration_check=True,
+#     heralding_mode="zeros",
+# )</div>
 </div>
 </div>
 </div>
@@ -1470,11 +1505,11 @@ job_monitor(job)</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">status</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">status</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
-<span class="c1">#old_job = backend.retrieve_job(job_id)</span>
+<span class="c1"># old_job = backend.retrieve_job(job_id)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-8">status = job.status()
 print(status)
-#old_job = backend.retrieve_job(job_id)</div>
+# old_job = backend.retrieve_job(job_id)</div>
 </div>
 </div>
 </div>
@@ -1521,11 +1556,15 @@ print(status)
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">transpiled_circuit</span> <span class="o">=</span> <span class="n">transpile</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span> <span class="n">layout_method</span><span class="o">=</span><span class="s1">'sabre'</span><span class="p">,</span> <span class="n">optimization_level</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">transpiled_circuit</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">'mpl'</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">transpiled_circuit</span> <span class="o">=</span> <span class="n">transpile</span><span class="p">(</span>
+    <span class="n">circuit</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span> <span class="n">layout_method</span><span class="o">=</span><span class="s2">"sabre"</span><span class="p">,</span> <span class="n">optimization_level</span><span class="o">=</span><span class="mi">3</span>
+<span class="p">)</span>
+<span class="n">transpiled_circuit</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s2">"mpl"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-9">transpiled_circuit = transpile(circuit, backend=backend, layout_method='sabre', optimization_level=3)
-transpiled_circuit.draw('mpl')</div>
+<div class="clipboard-copy-txt" id="cell-9">transpiled_circuit = transpile(
+    circuit, backend=backend, layout_method="sabre", optimization_level=3
+)
+transpiled_circuit.draw("mpl")</div>
 </div>
 </div>
 </div>
@@ -1562,33 +1601,33 @@ transpiled_circuit.draw('mpl')</div>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">qreg</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"QB"</span><span class="p">)</span>
-<span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qreg</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Bell pair circuit'</span><span class="p">)</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qreg</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Bell pair circuit"</span><span class="p">)</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qreg</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">qreg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">qreg</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
 
 
-<span class="c1"># Qubit numbers start at 0 index whereas the qubit names start at 1 index. </span>
+<span class="c1"># Qubit numbers start at 0 index whereas the qubit names start at 1 index.</span>
 <span class="n">qubit_mapping</span> <span class="o">=</span> <span class="p">{</span>
     <span class="n">qreg</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1"># Map the first qubit to QB1</span>
     <span class="n">qreg</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="mi">2</span><span class="p">,</span>  <span class="c1"># Map the second qubit to QB3</span>
-    <span class="p">}</span>
+<span class="p">}</span>
 
 
 <span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">initial_layout</span><span class="o">=</span><span class="n">qubit_mapping</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-10">qreg = QuantumRegister(2, "QB")
-circuit = QuantumCircuit(qreg, name='Bell pair circuit')
+circuit = QuantumCircuit(qreg, name="Bell pair circuit")
 circuit.h(qreg[0])
 circuit.cx(qreg[0], qreg[1])
 circuit.measure_all()
 
 
-# Qubit numbers start at 0 index whereas the qubit names start at 1 index. 
+# Qubit numbers start at 0 index whereas the qubit names start at 1 index.
 qubit_mapping = {
     qreg[0]: 1,  # Map the first qubit to QB1
     qreg[1]: 2,  # Map the second qubit to QB3
-    }
+}
 
 
 job = execute(circuit, backend, shots=100, initial_layout=qubit_mapping)</div>
@@ -1631,14 +1670,14 @@ job = execute(circuit, backend, shots=100, initial_layout=qubit_mapping)</div>
 <span class="k">for</span> <span class="n">qubit</span> <span class="ow">in</span> <span class="n">circuit</span><span class="o">.</span><span class="n">qubits</span><span class="p">:</span>
     <span class="n">index</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">find_bit</span><span class="p">(</span><span class="n">qubit</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
     <span class="n">mapping</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">index_to_qubit_name</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
- 
+
 <span class="nb">print</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-11">mapping = {}
 for qubit in circuit.qubits:
     index = circuit.find_bit(qubit).index
     mapping[index] = backend.index_to_qubit_name(index)
- 
+
 print(mapping)</div>
 </div>
 </div>
@@ -1677,10 +1716,10 @@ print(mapping)</div>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">circuit_optimized</span> <span class="o">=</span> <span class="n">optimize_single_qubit_gates</span><span class="p">(</span><span class="n">transpiled_circuit</span><span class="p">)</span>
-<span class="n">circuit_optimized</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">'mpl'</span><span class="p">)</span>
+<span class="n">circuit_optimized</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s2">"mpl"</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-12">circuit_optimized = optimize_single_qubit_gates(transpiled_circuit)
-circuit_optimized.draw('mpl')</div>
+circuit_optimized.draw("mpl")</div>
 </div>
 </div>
 </div>
@@ -1767,17 +1806,21 @@ plot_histogram(result.get_counts())</div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">exp_result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">_get_experiment</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Job ID: "</span><span class="p">,</span> <span class="n">job</span><span class="o">.</span><span class="n">job_id</span><span class="p">())</span>  <span class="c1"># Retrieving the submitted job id</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">circuits</span><span class="p">)</span>  <span class="c1"># Retrieving the circuit request sent</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Calibration Set ID: "</span><span class="p">,</span> <span class="n">exp_result</span><span class="o">.</span><span class="n">calibration_set_id</span><span class="p">)</span>  <span class="c1"># Retrieving the current calibration set id. </span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">"Calibration Set ID: "</span><span class="p">,</span> <span class="n">exp_result</span><span class="o">.</span><span class="n">calibration_set_id</span>
+<span class="p">)</span>  <span class="c1"># Retrieving the current calibration set id.</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">qubit_mapping</span><span class="p">)</span>  <span class="c1"># Retrieving the qubit mapping</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">shots</span><span class="p">)</span>  <span class="c1"># Retrieving the number of requested shots. </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">shots</span><span class="p">)</span>  <span class="c1"># Retrieving the number of requested shots.</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">exp_result</span><span class="o">.</span><span class="n">header</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-14">exp_result = result._get_experiment(circuit)
 print("Job ID: ", job.job_id())  # Retrieving the submitted job id
 print(result.request.circuits)  # Retrieving the circuit request sent
-print("Calibration Set ID: ", exp_result.calibration_set_id)  # Retrieving the current calibration set id. 
+print(
+    "Calibration Set ID: ", exp_result.calibration_set_id
+)  # Retrieving the current calibration set id.
 print(result.request.qubit_mapping)  # Retrieving the qubit mapping
-print(result.request.shots)  # Retrieving the number of requested shots. 
+print(result.request.shots)  # Retrieving the number of requested shots.
 print(exp_result.header)</div>
 </div>
 </div>
@@ -1815,12 +1858,14 @@ print(exp_result.header)</div>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">iqm.qiskit_iqm</span> <span class="kn">import</span> <span class="n">IQMFakeAdonis</span>
+
 <span class="n">fake_backend</span> <span class="o">=</span> <span class="n">IQMFakeAdonis</span><span class="p">()</span>
 <span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">fake_backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
 <span class="n">plot_histogram</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-15">from iqm.qiskit_iqm import IQMFakeAdonis
+
 fake_backend = IQMFakeAdonis()
 job = execute(circuit, fake_backend, shots=1000)
 print(job.result().get_counts())
@@ -1888,87 +1933,87 @@ plot_histogram(job.result().get_counts())</div>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">error_profile</span> <span class="o">=</span> <span class="n">fake_backend</span><span class="o">.</span><span class="n">error_profile</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">t1s</span><span class="p">[</span><span class="s1">'QB1'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">38940.0</span>  <span class="c1"># in ns 3.8940</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">t1s</span><span class="p">[</span><span class="s1">'QB2'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">25127.0</span>  <span class="c1"># in ns</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">t1s</span><span class="p">[</span><span class="s1">'QB3'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">43322.0</span>  <span class="c1"># in ns</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">t1s</span><span class="p">[</span><span class="s1">'QB4'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">38223.0</span>  <span class="c1"># in ns</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">t1s</span><span class="p">[</span><span class="s1">'QB5'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">37365.0</span>  <span class="c1"># in ns</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">t1s</span><span class="p">[</span><span class="s2">"QB1"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">38940.0</span>  <span class="c1"># in ns 3.8940</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">t1s</span><span class="p">[</span><span class="s2">"QB2"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">25127.0</span>  <span class="c1"># in ns</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">t1s</span><span class="p">[</span><span class="s2">"QB3"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">43322.0</span>  <span class="c1"># in ns</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">t1s</span><span class="p">[</span><span class="s2">"QB4"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">38223.0</span>  <span class="c1"># in ns</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">t1s</span><span class="p">[</span><span class="s2">"QB5"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">37365.0</span>  <span class="c1"># in ns</span>
 
-<span class="n">error_profile</span><span class="o">.</span><span class="n">t2s</span><span class="p">[</span><span class="s1">'QB1'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">24785.0</span>  <span class="c1"># in ns</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">t2s</span><span class="p">[</span><span class="s1">'QB2'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">20751.0</span>  <span class="c1"># in ns</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">t2s</span><span class="p">[</span><span class="s1">'QB3'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10050.0</span>  <span class="c1"># in ns</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">t2s</span><span class="p">[</span><span class="s1">'QB4'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">14391.0</span>  <span class="c1"># in ns</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">t2s</span><span class="p">[</span><span class="s1">'QB5'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">29012.0</span>  <span class="c1"># in ns</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">t2s</span><span class="p">[</span><span class="s2">"QB1"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">24785.0</span>  <span class="c1"># in ns</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">t2s</span><span class="p">[</span><span class="s2">"QB2"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">20751.0</span>  <span class="c1"># in ns</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">t2s</span><span class="p">[</span><span class="s2">"QB3"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10050.0</span>  <span class="c1"># in ns</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">t2s</span><span class="p">[</span><span class="s2">"QB4"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">14391.0</span>  <span class="c1"># in ns</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">t2s</span><span class="p">[</span><span class="s2">"QB5"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">29012.0</span>  <span class="c1"># in ns</span>
 
-<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s1">'phased_rx'</span><span class="p">][</span><span class="s1">'QB1'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0043</span> 
-<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s1">'phased_rx'</span><span class="p">][</span><span class="s1">'QB2'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0018</span> 
-<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s1">'phased_rx'</span><span class="p">][</span><span class="s1">'QB3'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0022</span> 
-<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s1">'phased_rx'</span><span class="p">][</span><span class="s1">'QB4'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0037</span> 
-<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s1">'phased_rx'</span><span class="p">][</span><span class="s1">'QB5'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0024</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"phased_rx"</span><span class="p">][</span><span class="s2">"QB1"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0043</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"phased_rx"</span><span class="p">][</span><span class="s2">"QB2"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0018</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"phased_rx"</span><span class="p">][</span><span class="s2">"QB3"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0022</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"phased_rx"</span><span class="p">][</span><span class="s2">"QB4"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0037</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"phased_rx"</span><span class="p">][</span><span class="s2">"QB5"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0024</span>
 
-<span class="n">error_profile</span><span class="o">.</span><span class="n">two_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s1">'cz'</span><span class="p">][(</span><span class="s1">'QB1'</span><span class="p">,</span> <span class="s1">'QB3'</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.018</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">two_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s1">'cz'</span><span class="p">][(</span><span class="s1">'QB2'</span><span class="p">,</span> <span class="s1">'QB3'</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.033</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">two_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s1">'cz'</span><span class="p">][(</span><span class="s1">'QB3'</span><span class="p">,</span> <span class="s1">'QB4'</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.030</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">two_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s1">'cz'</span><span class="p">][(</span><span class="s1">'QB3'</span><span class="p">,</span> <span class="s1">'QB5'</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.017</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">two_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"cz"</span><span class="p">][(</span><span class="s2">"QB1"</span><span class="p">,</span> <span class="s2">"QB3"</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.018</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">two_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"cz"</span><span class="p">][(</span><span class="s2">"QB2"</span><span class="p">,</span> <span class="s2">"QB3"</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.033</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">two_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"cz"</span><span class="p">][(</span><span class="s2">"QB3"</span><span class="p">,</span> <span class="s2">"QB4"</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.030</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">two_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"cz"</span><span class="p">][(</span><span class="s2">"QB3"</span><span class="p">,</span> <span class="s2">"QB5"</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.017</span>
 
-<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_durations</span><span class="p">[</span><span class="s1">'phased_rx'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">120</span>  <span class="c1"># in ns</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">two_qubit_gate_durations</span><span class="p">[</span><span class="s1">'cz'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">120</span>  <span class="c1"># in ns</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_durations</span><span class="p">[</span><span class="s2">"phased_rx"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">120</span>  <span class="c1"># in ns</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">two_qubit_gate_durations</span><span class="p">[</span><span class="s2">"cz"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">120</span>  <span class="c1"># in ns</span>
 
-<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s1">'QB1'</span><span class="p">][</span><span class="s1">'0'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.03375</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s1">'QB1'</span><span class="p">][</span><span class="s1">'1'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.03865</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s1">'QB2'</span><span class="p">][</span><span class="s1">'0'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.032</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s1">'QB2'</span><span class="p">][</span><span class="s1">'1'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0520</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s1">'QB3'</span><span class="p">][</span><span class="s1">'0'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0365</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s1">'QB3'</span><span class="p">][</span><span class="s1">'1'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.05885</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s1">'QB4'</span><span class="p">][</span><span class="s1">'0'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.03735</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s1">'QB4'</span><span class="p">][</span><span class="s1">'1'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.06225</span> 
-<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s1">'QB5'</span><span class="p">][</span><span class="s1">'0'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.04375</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s1">'QB5'</span><span class="p">][</span><span class="s1">'1'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.05689</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s2">"QB1"</span><span class="p">][</span><span class="s2">"0"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.03375</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s2">"QB1"</span><span class="p">][</span><span class="s2">"1"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.03865</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s2">"QB2"</span><span class="p">][</span><span class="s2">"0"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.032</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s2">"QB2"</span><span class="p">][</span><span class="s2">"1"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0520</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s2">"QB3"</span><span class="p">][</span><span class="s2">"0"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0365</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s2">"QB3"</span><span class="p">][</span><span class="s2">"1"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.05885</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s2">"QB4"</span><span class="p">][</span><span class="s2">"0"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.03735</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s2">"QB4"</span><span class="p">][</span><span class="s2">"1"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.06225</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s2">"QB5"</span><span class="p">][</span><span class="s2">"0"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.04375</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s2">"QB5"</span><span class="p">][</span><span class="s2">"1"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.05689</span>
 
-<span class="n">error_profile</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">'fake_helmi'</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"fake_helmi"</span>
 
 
 <span class="n">helmi_fake_backend</span> <span class="o">=</span> <span class="n">fake_backend</span><span class="o">.</span><span class="n">copy_with_error_profile</span><span class="p">(</span><span class="n">error_profile</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-17">error_profile = fake_backend.error_profile
-error_profile.t1s['QB1'] = 38940.0  # in ns 3.8940
-error_profile.t1s['QB2'] = 25127.0  # in ns
-error_profile.t1s['QB3'] = 43322.0  # in ns
-error_profile.t1s['QB4'] = 38223.0  # in ns
-error_profile.t1s['QB5'] = 37365.0  # in ns
+error_profile.t1s["QB1"] = 38940.0  # in ns 3.8940
+error_profile.t1s["QB2"] = 25127.0  # in ns
+error_profile.t1s["QB3"] = 43322.0  # in ns
+error_profile.t1s["QB4"] = 38223.0  # in ns
+error_profile.t1s["QB5"] = 37365.0  # in ns
 
-error_profile.t2s['QB1'] = 24785.0  # in ns
-error_profile.t2s['QB2'] = 20751.0  # in ns
-error_profile.t2s['QB3'] = 10050.0  # in ns
-error_profile.t2s['QB4'] = 14391.0  # in ns
-error_profile.t2s['QB5'] = 29012.0  # in ns
+error_profile.t2s["QB1"] = 24785.0  # in ns
+error_profile.t2s["QB2"] = 20751.0  # in ns
+error_profile.t2s["QB3"] = 10050.0  # in ns
+error_profile.t2s["QB4"] = 14391.0  # in ns
+error_profile.t2s["QB5"] = 29012.0  # in ns
 
-error_profile.single_qubit_gate_depolarizing_error_parameters['phased_rx']['QB1'] = 0.0043 
-error_profile.single_qubit_gate_depolarizing_error_parameters['phased_rx']['QB2'] = 0.0018 
-error_profile.single_qubit_gate_depolarizing_error_parameters['phased_rx']['QB3'] = 0.0022 
-error_profile.single_qubit_gate_depolarizing_error_parameters['phased_rx']['QB4'] = 0.0037 
-error_profile.single_qubit_gate_depolarizing_error_parameters['phased_rx']['QB5'] = 0.0024
+error_profile.single_qubit_gate_depolarizing_error_parameters["phased_rx"]["QB1"] = 0.0043
+error_profile.single_qubit_gate_depolarizing_error_parameters["phased_rx"]["QB2"] = 0.0018
+error_profile.single_qubit_gate_depolarizing_error_parameters["phased_rx"]["QB3"] = 0.0022
+error_profile.single_qubit_gate_depolarizing_error_parameters["phased_rx"]["QB4"] = 0.0037
+error_profile.single_qubit_gate_depolarizing_error_parameters["phased_rx"]["QB5"] = 0.0024
 
-error_profile.two_qubit_gate_depolarizing_error_parameters['cz'][('QB1', 'QB3')] = 0.018
-error_profile.two_qubit_gate_depolarizing_error_parameters['cz'][('QB2', 'QB3')] = 0.033
-error_profile.two_qubit_gate_depolarizing_error_parameters['cz'][('QB3', 'QB4')] = 0.030
-error_profile.two_qubit_gate_depolarizing_error_parameters['cz'][('QB3', 'QB5')] = 0.017
+error_profile.two_qubit_gate_depolarizing_error_parameters["cz"][("QB1", "QB3")] = 0.018
+error_profile.two_qubit_gate_depolarizing_error_parameters["cz"][("QB2", "QB3")] = 0.033
+error_profile.two_qubit_gate_depolarizing_error_parameters["cz"][("QB3", "QB4")] = 0.030
+error_profile.two_qubit_gate_depolarizing_error_parameters["cz"][("QB3", "QB5")] = 0.017
 
-error_profile.single_qubit_gate_durations['phased_rx'] = 120  # in ns
-error_profile.two_qubit_gate_durations['cz'] = 120  # in ns
+error_profile.single_qubit_gate_durations["phased_rx"] = 120  # in ns
+error_profile.two_qubit_gate_durations["cz"] = 120  # in ns
 
-error_profile.readout_errors['QB1']['0'] = 0.03375
-error_profile.readout_errors['QB1']['1'] = 0.03865
-error_profile.readout_errors['QB2']['0'] = 0.032
-error_profile.readout_errors['QB2']['1'] = 0.0520
-error_profile.readout_errors['QB3']['0'] = 0.0365
-error_profile.readout_errors['QB3']['1'] = 0.05885
-error_profile.readout_errors['QB4']['0'] = 0.03735
-error_profile.readout_errors['QB4']['1'] = 0.06225 
-error_profile.readout_errors['QB5']['0'] = 0.04375
-error_profile.readout_errors['QB5']['1'] = 0.05689
+error_profile.readout_errors["QB1"]["0"] = 0.03375
+error_profile.readout_errors["QB1"]["1"] = 0.03865
+error_profile.readout_errors["QB2"]["0"] = 0.032
+error_profile.readout_errors["QB2"]["1"] = 0.0520
+error_profile.readout_errors["QB3"]["0"] = 0.0365
+error_profile.readout_errors["QB3"]["1"] = 0.05885
+error_profile.readout_errors["QB4"]["0"] = 0.03735
+error_profile.readout_errors["QB4"]["1"] = 0.06225
+error_profile.readout_errors["QB5"]["0"] = 0.04375
+error_profile.readout_errors["QB5"]["1"] = 0.05689
 
-error_profile.name = 'fake_helmi'
+error_profile.name = "fake_helmi"
 
 
 helmi_fake_backend = fake_backend.copy_with_error_profile(error_profile)</div>
@@ -2042,23 +2087,23 @@ plot_histogram(job.result().get_counts())</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">circuits_list</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="n">circuit_1</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Bell pair circuit'</span><span class="p">)</span>
+<span class="n">circuit_1</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Bell pair circuit"</span><span class="p">)</span>
 <span class="n">circuit_1</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">circuit_1</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">circuit_1</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
 <span class="n">circuits_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">circuit_1</span><span class="p">)</span>
 
-<span class="n">circuit_1</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">'mpl'</span><span class="p">)</span>
+<span class="n">circuit_1</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s2">"mpl"</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-19">circuits_list = []
 
-circuit_1 = QuantumCircuit(2, name='Bell pair circuit')
+circuit_1 = QuantumCircuit(2, name="Bell pair circuit")
 circuit_1.h(0)
 circuit_1.cx(0, 1)
 circuit_1.measure_all()
 circuits_list.append(circuit_1)
 
-circuit_1.draw(output='mpl')</div>
+circuit_1.draw(output="mpl")</div>
 </div>
 </div>
 </div>
@@ -2083,21 +2128,21 @@ circuit_1.draw(output='mpl')</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">circuit_2</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Reverse Bell pair circuit'</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">circuit_2</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Reverse Bell pair circuit"</span><span class="p">)</span>
 <span class="n">circuit_2</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">circuit_2</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">circuit_2</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
 <span class="n">circuits_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">circuit_2</span><span class="p">)</span>
 
-<span class="n">circuit_2</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">'mpl'</span><span class="p">)</span>
+<span class="n">circuit_2</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s2">"mpl"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-20">circuit_2 = QuantumCircuit(2, name='Reverse Bell pair circuit')
+<div class="clipboard-copy-txt" id="cell-20">circuit_2 = QuantumCircuit(2, name="Reverse Bell pair circuit")
 circuit_2.h(1)
 circuit_2.cx(1, 0)
 circuit_2.measure_all()
 circuits_list.append(circuit_2)
 
-circuit_2.draw(output='mpl')</div>
+circuit_2.draw(output="mpl")</div>
 </div>
 </div>
 </div>
@@ -2123,12 +2168,16 @@ circuit_2.draw(output='mpl')</div>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Execute and monitor job</span>
-<span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">circuits_list</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">optimization_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">initial_layout</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span>
+    <span class="n">circuits_list</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">optimization_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">initial_layout</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Tracking execution of job:"</span><span class="p">)</span>
 <span class="n">job_monitor</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-21"># Execute and monitor job
-job = execute(circuits_list, backend, shots=10, optimization_level=3, initial_layout=[0,2])
+job = execute(
+    circuits_list, backend, shots=10, optimization_level=3, initial_layout=[0, 2]
+)
 print("Tracking execution of job:")
 job_monitor(job)</div>
 </div>
@@ -2159,13 +2208,13 @@ job_monitor(job)</div>
 <span class="n">result</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
 
 <span class="c1"># Plot histograms</span>
-<span class="n">plot_histogram</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">(),</span> <span class="n">legend</span><span class="o">=</span><span class="p">[</span><span class="s1">'Circuit 1'</span><span class="p">,</span> <span class="s1">'Circuit 2'</span><span class="p">])</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">(),</span> <span class="n">legend</span><span class="o">=</span><span class="p">[</span><span class="s2">"Circuit 1"</span><span class="p">,</span> <span class="s2">"Circuit 2"</span><span class="p">])</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-22"># Get results
 result = job.result()
 
 # Plot histograms
-plot_histogram(result.get_counts(), legend=['Circuit 1', 'Circuit 2'])</div>
+plot_histogram(result.get_counts(), legend=["Circuit 1", "Circuit 2"])</div>
 </div>
 </div>
 </div>
@@ -2207,9 +2256,10 @@ plot_histogram(result.get_counts(), legend=['Circuit 1', 'Circuit 2'])</div>
 <span class="n">backend</span> <span class="o">=</span> <span class="n">provider</span><span class="o">.</span><span class="n">get_backend</span><span class="p">()</span>
 
 
-<span class="n">dev</span> <span class="o">=</span> <span class="n">qml</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'qiskit.remote'</span><span class="p">,</span> <span class="n">wires</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">dev</span> <span class="o">=</span> <span class="n">qml</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">"qiskit.remote"</span><span class="p">,</span> <span class="n">wires</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dev</span><span class="o">.</span><span class="n">capabilities</span><span class="p">())</span>
+
 
 <span class="nd">@qml</span><span class="o">.</span><span class="n">qnode</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">interface</span><span class="o">=</span><span class="s2">"autograd"</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">circuit</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
@@ -2226,9 +2276,10 @@ provider = IQMProvider("https://helmi.vtt.fi/cocos")
 backend = provider.get_backend()
 
 
-dev = qml.device('qiskit.remote', wires=5, backend=backend, shots=10)
+dev = qml.device("qiskit.remote", wires=5, backend=backend, shots=10)
 
 print(dev.capabilities())
+
 
 @qml.qnode(dev, interface="autograd")
 def circuit(params):
@@ -2237,9 +2288,7 @@ def circuit(params):
     return qml.expval(qml.PauliZ(0))
 
 
-print(circuit([0.54, 0.12]))
-
-</div>
+print(circuit([0.54, 0.12]))</div>
 </div>
 </div>
 </div>

@@ -12,13 +12,13 @@
         <meta name="author" content="VTT Technical Research Centre of Finland Ltd. 2024">
       
       
-        <link rel="canonical" href="https://vttresearch.github.io/quantum-computer-documentation/examples/intro-to-helmi-cirq/">
+        <link rel="canonical" href="https://vttresearch.github.io/quantum-computer-documentation/examples/visualize_quality_metrics/">
       
       
-        <link rel="prev" href="../intro-to-helmi-qiskit/">
+        <link rel="prev" href="../intro-to-helmi-cirq/">
       
       
-        <link rel="next" href="../visualize_quality_metrics/">
+        <link rel="next" href="../../running/">
       
       
       <link rel="icon" href="../../assets/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Introduction to Helmi with Cirq - VTT Quantum Computer Documentation</title>
+        <title>Visualizing Quality Metrics - VTT Quantum Computer Documentation</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduction-to-helmi-with-cirq" class="md-skip">
+        <a href="#visualizing-quality-metrics" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction to Helmi with Cirq
+              Visualizing Quality Metrics
             
           </span>
         </div>
@@ -332,6 +332,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro-to-helmi-cirq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to Helmi with Cirq
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -348,7 +369,7 @@
           
   
   <span class="md-ellipsis">
-    Introduction to Helmi with Cirq
+    Visualizing Quality Metrics
   </span>
   
 
@@ -359,7 +380,7 @@
         
   
   <span class="md-ellipsis">
-    Introduction to Helmi with Cirq
+    Visualizing Quality Metrics
   </span>
   
 
@@ -381,37 +402,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
+  <a href="#importing-libraries" class="md-nav__link">
     <span class="md-ellipsis">
-      Setup
+      Importing Libraries
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-helmi-with-cirq" class="md-nav__link">
+  <a href="#getting-the-data-from-the-api" class="md-nav__link">
     <span class="md-ellipsis">
-      Using Helmi with Cirq
+      Getting the data from the API
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Using Helmi with Cirq">
+    <nav class="md-nav" aria-label="Getting the data from the API">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#constructing-and-executing-quantum-circuits" class="md-nav__link">
+  <a href="#defining-the-iqm-client" class="md-nav__link">
     <span class="md-ellipsis">
-      Constructing and executing quantum circuits
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#batch-execution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Batch execution
+      Defining the IQM Client
     </span>
   </a>
   
@@ -423,18 +435,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
+  <a href="#plotting-the-data" class="md-nav__link">
     <span class="md-ellipsis">
-      Summary
+      Plotting the data
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#additional-reading" class="md-nav__link">
+  <a href="#readout-fidelities" class="md-nav__link">
     <span class="md-ellipsis">
-      Additional Reading
+      Readout Fidelities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t_1-t_2-times" class="md-nav__link">
+    <span class="md-ellipsis">
+      $T_1$ &amp; $T_2$ Times
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#single-qubit-gate-fidelities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single qubit gate fidelities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-qubit-gate-fidelities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two qubit gate fidelities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software versions
     </span>
   </a>
   
@@ -444,27 +492,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../visualize_quality_metrics/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Visualizing Quality Metrics
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -610,7 +637,7 @@
               <article class="md-content__inner md-typeset">
                 
   
-      <a href="/quantum-computer-documentation/examples/intro-to-helmi-cirq/intro-to-helmi-cirq.ipynb" title="Download Notebook" class="md-content__button md-icon">
+      <a href="/quantum-computer-documentation/examples/visualize_quality_metrics/visualize_quality_metrics.ipynb" title="Download Notebook" class="md-content__button md-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg>
         Download
       </a>
@@ -1061,9 +1088,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="introduction-to-helmi-with-cirq">Introduction to Helmi with Cirq<a class="anchor-link" href="#introduction-to-helmi-with-cirq">¶</a></h1><p>Helmi is a 5 qubit Quantum Computer that is co-developed by <a href="https://www.vttresearch.com/en/ourservices/quantum-technology">VTT</a> and <a href="https://www.meetiqm.com/">IQM</a>. It uses superconducting transmon qubits in a star shaped topology. Helmi's natives gates consist of the phased-rx and controlled-z gates. This architecture is called <strong>Adonis</strong> by IQM.</p>
-<p>In this tutorial running on Helmi is demonstrated using the Cirq framework. You can also run on Helmi using <a href="https://qiskit.org/">Qiskit</a> with the <a href="https://github.com/iqm-finland/qiskit-on-iqm">qiskit-on-iqm</a> adapter, and this is described in a separate notebook.</p>
-<p>Here is Helmi!</p>
+<h1 id="visualizing-quality-metrics">Visualizing Quality Metrics<a class="anchor-link" href="#visualizing-quality-metrics">¶</a></h1><p>A quantum computers performance can change on a regular basis. This can be mitigated to some extent by calibration of the device which generates a <em>calibration set</em>, which is a set of parameters to current operate the quantum computer at. Because of drifts in the environment that the quantum computer operates at, regular calibration is required to account for these drifts and maintain optimal performance.</p>
+<p>To test the current performance of the calibration, we also benchmark the device, producing a <em>quality metrics set</em>. These benchmarks reflect the current status of the quantum computer and are essential pieces of information for using the system. For example, performance can often be increased by choosing a particular qubit or tunable coupler when running your quantum circuit.</p>
+<p>This notebook demonstrates how one can read the quality metrics set from the API and visualize it.</p>
 </div>
 </div>
 </div>
@@ -1074,34 +1101,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div style="text-align:center">
-<img alt="alt text" class="blog-image" height="500" src="../../img/large_helmi.jpg" width="900"/>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="setup">Setup<a class="anchor-link" href="#setup">¶</a></h2><p>This notebook uses the following requirements.</p>
-<div class="highlight"><pre><span></span>cirq-iqm==12.1
-iqm-client==15.3
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="using-helmi-with-cirq">Using Helmi with Cirq<a class="anchor-link" href="#using-helmi-with-cirq">¶</a></h2><p>First we import <a href="https://github.com/iqm-finland/cirq-on-iqm">cirq-on-iqm</a> which is needed to run on Helmi with cirq. You can read the user guide <a href="https://iqm-finland.github.io/cirq-on-iqm/versions/11.9/user_guide.html">here</a>.</p>
+<h2 id="importing-libraries">Importing Libraries<a class="anchor-link" href="#importing-libraries">¶</a></h2>
 </div>
 </div>
 </div>
@@ -1124,21 +1124,21 @@ iqm-client==15.3
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">cirq</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">cirq.contrib.svg</span> <span class="kn">import</span> <span class="n">SVGCircuit</span>
-<span class="kn">from</span> <span class="nn">iqm.cirq_iqm.iqm_sampler</span> <span class="kn">import</span> <span class="n">IQMSampler</span>
-<span class="kn">from</span> <span class="nn">iqm.cirq_iqm.optimizers</span> <span class="kn">import</span> <span class="n">simplify_circuit</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">iqm.iqm_client</span> <span class="kn">import</span> <span class="n">IQMClient</span>
+<span class="kn">from</span> <span class="nn">iqm.qiskit_iqm</span> <span class="kn">import</span> <span class="n">IQMProvider</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-1">import cirq
+<div class="clipboard-copy-txt" id="cell-1">import json
+import os
+
 import matplotlib.pyplot as plt
-import networkx as nx
-import numpy as np
-from cirq.contrib.svg import SVGCircuit
-from iqm.cirq_iqm.iqm_sampler import IQMSampler
-from iqm.cirq_iqm.optimizers import simplify_circuit</div>
+import requests
+from iqm.iqm_client import IQMClient
+from iqm.qiskit_iqm import IQMProvider</div>
 </div>
 </div>
 </div>
@@ -1151,7 +1151,8 @@ from iqm.cirq_iqm.optimizers import simplify_circuit</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Then connection to the backend is simple! For this we point the <code>IQMSampler</code> at what is called "cocos URL". The cocos url to access Helmi is provided below.</p>
+<h2 id="getting-the-data-from-the-api">Getting the data from the API<a class="anchor-link" href="#getting-the-data-from-the-api">¶</a></h2><p>The calibration set ID and quality metrics set data are bundled together in JSON format available from the Cortex API. In this example, we make a HTTP request to the particular API endpoint, in this case, <code>calibration/metrics/latest</code>. We use the <code>IQMClient</code> to add the authentication token to the request, which is needed for accessing VTT quantum computers.</p>
+<p>First we define a helper function to get the data. The function <code>get_calibration_data</code> takes input <code>IQMClient</code>, <code>calibration_set_id</code> and optionally a <code>filename</code>. The <code>filename</code> option can be pass to save the data to a json file.</p>
 </div>
 </div>
 </div>
@@ -1174,11 +1175,65 @@ from iqm.cirq_iqm.optimizers import simplify_circuit</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">sampler</span> <span class="o">=</span> <span class="n">IQMSampler</span><span class="p">(</span><span class="s2">"https://qc.vtt.fi/helmi/cocos"</span><span class="p">)</span>
-<span class="n">device</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">device</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">get_calibration_data</span><span class="p">(</span>
+    <span class="n">client</span><span class="p">:</span> <span class="n">IQMClient</span><span class="p">,</span> <span class="n">calibration_set_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Return the calibration data and figures of merit using IQMClient.</span>
+<span class="sd">    Optionally you can input a calibration set id (UUID) to query historical results</span>
+<span class="sd">    Optionally save the response to a json file, if filename is provided</span>
+<span class="sd">    """</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"User-Agent"</span><span class="p">:</span> <span class="n">client</span><span class="o">.</span><span class="n">_signature</span><span class="p">}</span>
+    <span class="n">bearer_token</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">_get_bearer_token</span><span class="p">()</span>
+    <span class="n">headers</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="n">bearer_token</span>
+
+    <span class="k">if</span> <span class="n">calibration_set_id</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">_base_url</span><span class="p">,</span> <span class="s2">"calibration/metrics/"</span><span class="p">,</span> <span class="n">calibration_set_id</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">_base_url</span><span class="p">,</span> <span class="s2">"calibration/metrics/latest"</span><span class="p">)</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>  <span class="c1"># will raise an HTTPError if the response was not ok</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">data_str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">filename</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data_str</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Data saved to </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-2">sampler = IQMSampler("https://qc.vtt.fi/helmi/cocos")
-device = sampler.device</div>
+<div class="clipboard-copy-txt" id="cell-2">def get_calibration_data(
+    client: IQMClient, calibration_set_id=None, filename: str = None
+):
+    """
+    Return the calibration data and figures of merit using IQMClient.
+    Optionally you can input a calibration set id (UUID) to query historical results
+    Optionally save the response to a json file, if filename is provided
+    """
+    headers = {"User-Agent": client._signature}
+    bearer_token = client._get_bearer_token()
+    headers["Authorization"] = bearer_token
+
+    if calibration_set_id:
+        url = os.path.join(client._base_url, "calibration/metrics/", calibration_set_id)
+    else:
+        url = os.path.join(client._base_url, "calibration/metrics/latest")
+
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()  # will raise an HTTPError if the response was not ok
+
+    data = response.json()
+    data_str = json.dumps(data, indent=4)
+
+    if filename:
+        with open(filename, "w") as f:
+            f.write(data_str)
+        print(f"Data saved to {filename}")
+
+    return data</div>
 </div>
 </div>
 </div>
@@ -1191,7 +1246,7 @@ device = sampler.device</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>We can also specify a <code>calibration_set_id</code> and whether to run with <code>circuit_duration_check</code> or not. The <code>circuit_duration_check</code> option when set to <code>True</code> disqualifies any circuits that are too long compared to the coherence time of the qubits.</p>
+<h3 id="defining-the-iqm-client">Defining the IQM Client<a class="anchor-link" href="#defining-the-iqm-client">¶</a></h3><p>Setup the qiskit <code>IQMProvider</code> using the link to backend.</p>
 </div>
 </div>
 </div>
@@ -1214,19 +1269,17 @@ device = sampler.device</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">sampler</span> <span class="o">=</span> <span class="n">IQMSampler</span><span class="p">(</span>
-    <span class="s2">"https://qc.vtt.fi/helmi/cocos"</span><span class="p">,</span>
-    <span class="n">calibration_set_id</span><span class="o">=</span><span class="s2">"c5a5e2d1-100b-42d4-a4fd-a49edfb9d176"</span><span class="p">,</span>
-    <span class="n">circuit_duration_check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">heralding_mode</span><span class="o">=</span><span class="s2">"zeros"</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">provider</span> <span class="o">=</span> <span class="n">IQMProvider</span><span class="p">(</span><span class="s2">"https://qc.vtt.fi/cocos"</span><span class="p">)</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">provider</span><span class="o">.</span><span class="n">get_backend</span><span class="p">()</span>
+
+<span class="c1"># If you receive an error you may need to set the IQM_TOKENS_FILE environment variable</span>
+<span class="c1"># os.environ["IQM_TOKENS_FILE"] = "/path/to/file"</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-3">sampler = IQMSampler(
-    "https://qc.vtt.fi/helmi/cocos",
-    calibration_set_id="c5a5e2d1-100b-42d4-a4fd-a49edfb9d176",
-    circuit_duration_check=True,
-    heralding_mode="zeros",
-)</div>
+<div class="clipboard-copy-txt" id="cell-3">provider = IQMProvider("https://qc.vtt.fi/cocos")
+backend = provider.get_backend()
+
+# If you receive an error you may need to set the IQM_TOKENS_FILE environment variable
+# os.environ["IQM_TOKENS_FILE"] = "/path/to/file"</div>
 </div>
 </div>
 </div>
@@ -1239,7 +1292,7 @@ device = sampler.device</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Now that we have connected to Helmi, we can query for some information about Helmi!</p>
+<p>We can then get the raw calibration data and see what it looks like</p>
 </div>
 </div>
 </div>
@@ -1262,13 +1315,13 @@ device = sampler.device</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Native operations: </span><span class="si">{</span><span class="n">device</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">gateset</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Number of qubits: </span><span class="si">{</span><span class="n">device</span><span class="o">.</span><span class="n">qubits</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Coupling map: </span><span class="si">{</span><span class="n">device</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">nx_graph</span><span class="o">.</span><span class="n">edges</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">calibration_data</span> <span class="o">=</span> <span class="n">get_calibration_data</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">client</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">calibration_data</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-4">print(f"Native operations: {device.metadata.gateset}")
-print(f"Number of qubits: {device.qubits}")
-print(f"Coupling map: {device.metadata.nx_graph.edges}")</div>
+<div class="clipboard-copy-txt" id="cell-4">calibration_data = get_calibration_data(backend.client)
+
+print(calibration_data)</div>
 </div>
 </div>
 </div>
@@ -1281,7 +1334,7 @@ print(f"Coupling map: {device.metadata.nx_graph.edges}")</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The topology can be visualized with <code>networkx</code>.</p>
+<p>Here are the alternative options</p>
 </div>
 </div>
 </div>
@@ -1304,28 +1357,16 @@ print(f"Coupling map: {device.metadata.nx_graph.edges}")</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
-<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">nx_graph</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
-<span class="n">node_labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">}</span>
-<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
-    <span class="n">G</span><span class="p">,</span>
-    <span class="n">labels</span><span class="o">=</span><span class="n">node_labels</span><span class="p">,</span>
-    <span class="n">node_color</span><span class="o">=</span><span class="s2">"skyblue"</span><span class="p">,</span>
-    <span class="n">node_size</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
-    <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-    <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">cal_set_id</span> <span class="o">=</span> <span class="s2">"1b7b8415-1ec6-41d5-8c11-9800c111612c"</span>
+<span class="n">calibration_data</span> <span class="o">=</span> <span class="n">get_calibration_data</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">client</span><span class="p">,</span> <span class="n">cal_set_id</span><span class="p">)</span>
+<span class="n">calibration_data</span> <span class="o">=</span> <span class="n">get_calibration_data</span><span class="p">(</span>
+    <span class="n">backend</span><span class="o">.</span><span class="n">client</span><span class="p">,</span> <span class="n">cal_set_id</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">cal_set_id</span><span class="si">}</span><span class="s2">.json"</span>
 <span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-5">G = nx.Graph()
-G.add_edges_from(device.metadata.nx_graph.edges)
-node_labels = {node: str(node) for node in G.nodes}
-nx.draw(
-    G,
-    labels=node_labels,
-    node_color="skyblue",
-    node_size=500,
-    font_size=10,
-    with_labels=True,
+<div class="clipboard-copy-txt" id="cell-5">cal_set_id = "1b7b8415-1ec6-41d5-8c11-9800c111612c"
+calibration_data = get_calibration_data(backend.client, cal_set_id)
+calibration_data = get_calibration_data(
+    backend.client, cal_set_id, filename=f"{cal_set_id}.json"
 )</div>
 </div>
 </div>
@@ -1339,7 +1380,7 @@ nx.draw(
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="constructing-and-executing-quantum-circuits">Constructing and executing quantum circuits<a class="anchor-link" href="#constructing-and-executing-quantum-circuits">¶</a></h3><p>Circuits are constructed in Cirq by decomposing and routing them for the target topology. Additionally, you can run some simple optimization routines to get better performance for your circuit.</p>
+<p>We can parse this data to see individual metrics and values. For example:</p>
 </div>
 </div>
 </div>
@@ -1362,21 +1403,9 @@ nx.draw(
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">q1</span><span class="p">,</span> <span class="n">q2</span> <span class="o">=</span> <span class="n">cirq</span><span class="o">.</span><span class="n">NamedQubit</span><span class="p">(</span><span class="s2">"Alice"</span><span class="p">),</span> <span class="n">cirq</span><span class="o">.</span><span class="n">NamedQubit</span><span class="p">(</span><span class="s2">"Bob"</span><span class="p">)</span>
-<span class="n">circuit</span> <span class="o">=</span> <span class="n">cirq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">()</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cirq</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="n">q1</span><span class="p">))</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cirq</span><span class="o">.</span><span class="n">CNOT</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">))</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cirq</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">"m"</span><span class="p">))</span>
-
-<span class="n">SVGCircuit</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">calibration_data</span><span class="p">[</span><span class="s2">"metrics"</span><span class="p">]</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-6">q1, q2 = cirq.NamedQubit("Alice"), cirq.NamedQubit("Bob")
-circuit = cirq.Circuit()
-circuit.append(cirq.H(q1))
-circuit.append(cirq.CNOT(q1, q2))
-circuit.append(cirq.measure(q1, q2, key="m"))
-
-SVGCircuit(circuit)</div>
+<div class="clipboard-copy-txt" id="cell-6">calibration_data["metrics"]</div>
 </div>
 </div>
 </div>
@@ -1389,7 +1418,28 @@ SVGCircuit(circuit)</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>First we'll transpile the circuit into Helmi's native gates</p>
+<p>The data is in the format</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="err">'compo</span><span class="kc">nent</span><span class="err">.me</span><span class="kc">tr</span><span class="err">ic'</span><span class="p">:</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="err">'value'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">1</span><span class="err">'</span><span class="p">,</span>
+<span class="w">    </span><span class="err">'u</span><span class="kc">n</span><span class="err">i</span><span class="kc">t</span><span class="err">'</span><span class="p">:</span><span class="w"> </span><span class="err">''</span><span class="p">,</span>
+<span class="w">    </span><span class="err">'u</span><span class="kc">n</span><span class="err">cer</span><span class="kc">ta</span><span class="err">i</span><span class="kc">n</span><span class="err">i</span><span class="kc">t</span><span class="err">y'</span><span class="p">:</span><span class="w"> </span><span class="err">''</span><span class="p">,</span>
+<span class="w">    </span><span class="err">'</span><span class="kc">t</span><span class="err">imes</span><span class="kc">ta</span><span class="err">mp'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">2024-04-08</span><span class="err">T</span><span class="mi">05</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mf">47.58068</span><span class="err">'</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="plotting-the-data">Plotting the data<a class="anchor-link" href="#plotting-the-data">¶</a></h2><p>To plot the data, we utilise a simple plotting function which can plot a specific metric which we are interested in. The function iterates over the gathered data and extracts the particular keys and values for the input metric. This requires knowing and using the same string as the metric you are interested in.</p>
 </div>
 </div>
 </div>
@@ -1412,11 +1462,79 @@ SVGCircuit(circuit)</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">decomposed_circuit</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">decompose_circuit</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
-<span class="n">SVGCircuit</span><span class="p">(</span><span class="n">decomposed_circuit</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">plot_metrics</span><span class="p">(</span>
+    <span class="n">metric</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">limits</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="p">):</span>
+    <span class="c1"># Initialize lists to store the values and labels</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Iterate over the calibration data and collect values and labels based on the metric</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">metric_data</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"metrics"</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">metric</span><span class="p">):</span>
+            <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">metric_data</span><span class="p">[</span><span class="s2">"value"</span><span class="p">]))</span>
+            <span class="c1"># Extract the qubit label from the key</span>
+            <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"."</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># Check if values were found for the given metric</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">values</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">metric</span><span class="si">}</span><span class="s2"> not in quality metrics set!"</span>
+
+    <span class="c1"># Set the width and gap between the bars</span>
+    <span class="n">bar_width</span> <span class="o">=</span> <span class="mf">0.4</span>
+    <span class="c1"># Calculate the positions of the bars</span>
+    <span class="n">positions</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">))</span>
+    <span class="c1"># Plot the values with labels</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">bar_width</span><span class="p">,</span> <span class="n">tick_label</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">limits</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">limits</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">"y"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-7">decomposed_circuit = device.decompose_circuit(circuit)
-SVGCircuit(decomposed_circuit)</div>
+<div class="clipboard-copy-txt" id="cell-7">def plot_metrics(
+    metric: str, title: str, ylabel: str, xlabel: str, data: dict, limits: list = []
+):
+    # Initialize lists to store the values and labels
+    values = []
+    labels = []
+
+    # Iterate over the calibration data and collect values and labels based on the metric
+    for key, metric_data in data["metrics"].items():
+        if key.endswith(metric):
+            values.append(float(metric_data["value"]))
+            # Extract the qubit label from the key
+            labels.append(key.split(".")[0])
+
+    # Check if values were found for the given metric
+    if not values:
+        return f"{metric} not in quality metrics set!"
+
+    # Set the width and gap between the bars
+    bar_width = 0.4
+    # Calculate the positions of the bars
+    positions = range(len(values))
+    # Plot the values with labels
+    plt.bar(positions, values, width=bar_width, tick_label=labels)
+
+    if len(limits) == 2:
+        plt.ylim(limits)
+
+    plt.grid(axis="y")
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.title(title)
+    plt.xticks(rotation=90)
+
+    plt.tight_layout()
+    plt.show()</div>
 </div>
 </div>
 </div>
@@ -1429,7 +1547,9 @@ SVGCircuit(decomposed_circuit)</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Then we route the circuit based on Helmi's topology</p>
+<h2 id="readout-fidelities">Readout Fidelities<a class="anchor-link" href="#readout-fidelities">¶</a></h2><p>The readout fidelity describes how well the quantum computer can measure your quantum state. From the readout fidelity one can see how much error from their quantum circuit they can attribute to incorrectly reading out or measuring the quantum state.</p>
+<p>Readout fidelity includes both state preparation and measurement errors here.</p>
+<p>Typical values for readout fidelities are between $94\%$ and $99\%$ for VTT quantum computers.</p>
 </div>
 </div>
 </div>
@@ -1452,11 +1572,23 @@ SVGCircuit(decomposed_circuit)</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">routed_circuit</span><span class="p">,</span> <span class="n">initial_mapping</span><span class="p">,</span> <span class="n">final_mapping</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">route_circuit</span><span class="p">(</span><span class="n">decomposed_circuit</span><span class="p">)</span>
-<span class="n">SVGCircuit</span><span class="p">(</span><span class="n">routed_circuit</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">plot_metrics</span><span class="p">(</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s2">"single_shot_readout_fidelity"</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"Single Shot Readout Fidelities"</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">"Qubits"</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Success rate"</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">calibration_data</span><span class="p">,</span>
+    <span class="n">limits</span><span class="o">=</span><span class="p">[</span><span class="mf">0.85</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-8">routed_circuit, initial_mapping, final_mapping = device.route_circuit(decomposed_circuit)
-SVGCircuit(routed_circuit)</div>
+<div class="clipboard-copy-txt" id="cell-8">plot_metrics(
+    metric="single_shot_readout_fidelity",
+    title="Single Shot Readout Fidelities",
+    xlabel="Qubits",
+    ylabel="Success rate",
+    data=calibration_data,
+    limits=[0.85, 1],
+)</div>
 </div>
 </div>
 </div>
@@ -1469,7 +1601,12 @@ SVGCircuit(routed_circuit)</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>By printing the initial mapping we can see how the qubit names have beemn translated into the names of the qubits physically on Helmi and how the original qubit names were routed onto the device.</p>
+<h2 id="t_1-t_2-times">$T_1$ &amp; $T_2$ Times<a class="anchor-link" href="#t_1-t_2-times">¶</a></h2><p>The $T_1$ and $T_2$ times are the coherence times for the system.</p>
+<p>The $T_1$ time is called the longitudinal relaxation rate and describes how quickly the excited state of the qubit returns to its ground state.</p>
+<p>The $T_2$ time is called the transverse relaxation rate and describes loss of coherence of a superposition state.</p>
+<p>The $T_2$-echo time describes the loss of coherence of the superposition state of the qubit. It is more precise than the $T_2$ Time as it is less susceptible to low-frequency noise.</p>
+<p>Based on these values you can approximate how many gates you can run on the quantum computer before decoherence occurs, which is an important quantity when writing quantum circuits.</p>
+<p>Typical values for the coherence times are between $10 \mu s$ and $60 \mu s$ for VTT's quantum computers.</p>
 </div>
 </div>
 </div>
@@ -1492,22 +1629,23 @@ SVGCircuit(routed_circuit)</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">initial_mapping</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">plot_metrics</span><span class="p">(</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s2">"t1_time"</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"T1 times"</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">"Qubits"</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Time"</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">calibration_data</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-9">print(initial_mapping)</div>
+<div class="clipboard-copy-txt" id="cell-9">plot_metrics(
+    metric="t1_time",
+    title="T1 times",
+    xlabel="Qubits",
+    ylabel="Time",
+    data=calibration_data,
+)</div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>This circuit can be executed on Helmi, but as an additional step we can simplify the circuit, using <a href="https://github.com/iqm-finland/cirq-on-iqm/blob/main/src/iqm/cirq_iqm/optimizers.py">cirq-on-iqm's built in optimizers</a>.</p>
 </div>
 </div>
 </div>
@@ -1530,24 +1668,23 @@ SVGCircuit(routed_circuit)</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">simplified_circuit</span> <span class="o">=</span> <span class="n">simplify_circuit</span><span class="p">(</span><span class="n">routed_circuit</span><span class="p">)</span>
-<span class="n">SVGCircuit</span><span class="p">(</span><span class="n">simplified_circuit</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">plot_metrics</span><span class="p">(</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s2">"t2_time"</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"T2 times"</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">"Qubits"</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Time"</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">calibration_data</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-10">simplified_circuit = simplify_circuit(routed_circuit)
-SVGCircuit(simplified_circuit)</div>
+<div class="clipboard-copy-txt" id="cell-10">plot_metrics(
+    metric="t2_time",
+    title="T2 times",
+    xlabel="Qubits",
+    ylabel="Time",
+    data=calibration_data,
+)</div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The circuits can then be executed by calling <code>sampler.run</code>. Additionally, a folding function can be passed to process the sampled measurement results and convert the results into a format suitable for plotting for example.</p>
 </div>
 </div>
 </div>
@@ -1570,23 +1707,21 @@ SVGCircuit(simplified_circuit)</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">fold_func</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""Fold the measured bit arrays into strings."""</span>
-    <span class="k">return</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">chr</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">"0"</span><span class="p">)),</span> <span class="n">x</span><span class="p">))</span>
-
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">simplified_circuit</span><span class="p">,</span> <span class="n">repetitions</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="c1"># print(result.measurements['m'])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">"m"</span><span class="p">,</span> <span class="n">fold_func</span><span class="o">=</span><span class="n">fold_func</span><span class="p">))</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">plot_metrics</span><span class="p">(</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s2">"t2_echo_time"</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"T2 Echo times"</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">"Qubits"</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Time"</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">calibration_data</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-11">def fold_func(x: np.ndarray) -&gt; str:
-    """Fold the measured bit arrays into strings."""
-    return "".join(map(lambda x: chr(x + ord("0")), x))
-
-
-result = sampler.run(simplified_circuit, repetitions=100)
-# print(result.measurements['m'])
-print(result.histogram(key="m", fold_func=fold_func))</div>
+<div class="clipboard-copy-txt" id="cell-11">plot_metrics(
+    metric="t2_echo_time",
+    title="T2 Echo times",
+    xlabel="Qubits",
+    ylabel="Time",
+    data=calibration_data,
+)</div>
 </div>
 </div>
 </div>
@@ -1599,7 +1734,10 @@ print(result.histogram(key="m", fold_func=fold_func))</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>A histogram of the results can be plotted using <a href="https://quantumai.google/cirq/simulate/state_histograms"><code>plot_state_histogram</code></a>.</p>
+<h2 id="single-qubit-gate-fidelities">Single qubit gate fidelities<a class="anchor-link" href="#single-qubit-gate-fidelities">¶</a></h2><p>Single qubit gate fidelities are measured through executing the single qubit <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.106.180504">randomized benchmarking</a> (RB) experiment.</p>
+<p>In this experiment a random sequence of single-qubit clifford gates are sampled and the survival probabilities are measured. An exponential curve is then fit and an estimate for the average gate fidelity across the set of clifford gates is calculated.</p>
+<p>It is important to note that single qubit gate fidelities are independent of state preparation and measurement (SPAM) errors.</p>
+<p>Typical values range between $99.99\%$ and $99.999\%$.</p>
 </div>
 </div>
 </div>
@@ -1622,17 +1760,23 @@ print(result.histogram(key="m", fold_func=fold_func))</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">binary_labels</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">[</span><span class="nb">bin</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">num_qubits</span><span class="p">)]</span>
-
-
-<span class="n">cirq</span><span class="o">.</span><span class="n">plot_state_histogram</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(),</span> <span class="n">tick_label</span><span class="o">=</span><span class="n">binary_labels</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">plot_metrics</span><span class="p">(</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s2">"fidelity_1qb_gates_averaged"</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"Single-qubit Gate Fidelities"</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">"Qubits"</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Fidelities"</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">calibration_data</span><span class="p">,</span>
+    <span class="n">limits</span><span class="o">=</span><span class="p">[</span><span class="mf">0.95</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-12">def binary_labels(num_qubits):
-    return [bin(x)[2:].zfill(num_qubits) for x in range(2**num_qubits)]
-
-
-cirq.plot_state_histogram(result, plt.subplot(), tick_label=binary_labels(2))</div>
+<div class="clipboard-copy-txt" id="cell-12">plot_metrics(
+    metric="fidelity_1qb_gates_averaged",
+    title="Single-qubit Gate Fidelities",
+    xlabel="Qubits",
+    ylabel="Fidelities",
+    data=calibration_data,
+    limits=[0.95, 1],
+)</div>
 </div>
 </div>
 </div>
@@ -1645,7 +1789,10 @@ cirq.plot_state_histogram(result, plt.subplot(), tick_label=binary_labels(2))</d
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Additional metadata about the executed job can also be found.</p>
+<h2 id="two-qubit-gate-fidelities">Two qubit gate fidelities<a class="anchor-link" href="#two-qubit-gate-fidelities">¶</a></h2><p>The calibration data reports two metrics for the two-qubit gate fidelity. The CZ gate fidelity and the two-qubit average gate fidelity.</p>
+<p>The CZ fidelity is estimated using interleaved randomized benchmarking. In this randomized benchmarking sequence is interleaved with the CZ gate, obtaining the average gate fidelity for that specific gate. This is important to know because VTT's quantum computers have their two-qubit native gate as the CZ gate. The fidelity is usually higher than the average 2QB gate fidelity as a random 2QB Clifford transpiles on average to 8.25 1QB gates and 1.5 2QB CZ gates.</p>
+<p>The 2QB average gate fidelity is estimated with randomized benchmarking protocol in a similar fashion to the single-qubit RB protocol.</p>
+<p>Typical values are between $97\%$ and $99\%$ for CZ gate fidelities and $93\%$ and $96\%$ for two-qubit RB.</p>
 </div>
 </div>
 </div>
@@ -1668,30 +1815,25 @@ cirq.plot_state_histogram(result, plt.subplot(), tick_label=binary_labels(2))</d
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Job ID: "</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">job_id</span><span class="p">)</span>  <span class="c1"># Retrieving the submitted job id</span>
-<span class="nb">print</span><span class="p">(</span>
-    <span class="s2">"Calibration Set ID: "</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">calibration_set_id</span>
-<span class="p">)</span>  <span class="c1"># Retrieving the current calibration set id.</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">plot_metrics</span><span class="p">(</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s2">"cz_gate_fidelity"</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"CZ Gate Fidelities"</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">"Qubit pairs"</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Fidelities"</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">calibration_data</span><span class="p">,</span>
+    <span class="n">limits</span><span class="o">=</span><span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-13">print("Job ID: ", result.metadata.job_id)  # Retrieving the submitted job id
-print(
-    "Calibration Set ID: ", result.metadata.calibration_set_id
-)  # Retrieving the current calibration set id.</div>
+<div class="clipboard-copy-txt" id="cell-13">plot_metrics(
+    metric="cz_gate_fidelity",
+    title="CZ Gate Fidelities",
+    xlabel="Qubit pairs",
+    ylabel="Fidelities",
+    data=calibration_data,
+    limits=[0.8, 1],
+)</div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="batch-execution">Batch execution<a class="anchor-link" href="#batch-execution">¶</a></h3><p>Helmi also allows for batches of circuits to be submitted with 1 call to the quantum computer. A batch is simply a list of circuits. This is often faster than executing circuits individually, however, circuits will still be executed sequentially. On Helmi currently you can only place a maximum of 20 circuits in one batch. All circuits in a batch are executed with the same number of shots. The maximum number of shots per circuit is 100,000.</p>
-<p>With cirq this is implemented via the <code>run_iqm_batch</code> method of <code>sampler</code>.</p>
-<p>Batch submission of circuits allows parameterized circuits to be executed using the <a href="https://quantumai.google/reference/python/cirq/resolve_parameters"><code>cirq-resolve_parameters</code></a> function.</p>
 </div>
 </div>
 </div>
@@ -1714,61 +1856,23 @@ print(
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">circuit_list</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="n">q1</span><span class="p">,</span> <span class="n">q2</span> <span class="o">=</span> <span class="n">cirq</span><span class="o">.</span><span class="n">NamedQubit</span><span class="p">(</span><span class="s2">"Alice"</span><span class="p">),</span> <span class="n">cirq</span><span class="o">.</span><span class="n">NamedQubit</span><span class="p">(</span><span class="s2">"Bob"</span><span class="p">)</span>
-<span class="n">circuit_1</span> <span class="o">=</span> <span class="n">cirq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">()</span>
-<span class="n">circuit_1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cirq</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="n">q1</span><span class="p">))</span>
-<span class="n">circuit_1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cirq</span><span class="o">.</span><span class="n">CNOT</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">))</span>
-<span class="n">circuit_1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cirq</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">"m"</span><span class="p">))</span>
-
-<span class="n">SVGCircuit</span><span class="p">(</span><span class="n">circuit_1</span><span class="p">)</span>
-
-<span class="n">circuit_2</span> <span class="o">=</span> <span class="n">cirq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">()</span>
-<span class="n">circuit_2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cirq</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="n">q1</span><span class="p">))</span>
-<span class="n">circuit_2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cirq</span><span class="o">.</span><span class="n">CNOT</span><span class="p">(</span><span class="n">q2</span><span class="p">,</span> <span class="n">q1</span><span class="p">))</span>
-<span class="n">circuit_2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cirq</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">"m"</span><span class="p">))</span>
-
-<span class="n">SVGCircuit</span><span class="p">(</span><span class="n">circuit_2</span><span class="p">)</span>
-
-<span class="n">routed_circuit_1</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">route_circuit</span><span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">decompose_circuit</span><span class="p">(</span><span class="n">circuit_1</span><span class="p">))</span>
-<span class="n">routed_circuit_2</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">route_circuit</span><span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">decompose_circuit</span><span class="p">(</span><span class="n">circuit_2</span><span class="p">))</span>
-
-<span class="n">circuit_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">routed_circuit_1</span><span class="p">)</span>
-<span class="n">circuit_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">routed_circuit_2</span><span class="p">)</span>
-
-<span class="n">results</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">run_iqm_batch</span><span class="p">(</span><span class="n">circuit_list</span><span class="p">,</span> <span class="n">repetitions</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">"m"</span><span class="p">))</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">plot_metrics</span><span class="p">(</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s2">"fidelity_2qb_cliffords_averaged"</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"Two-qubit Gates Cliffords Averaged"</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">"Qubits"</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Fidelities"</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">calibration_data</span><span class="p">,</span>
+    <span class="n">limits</span><span class="o">=</span><span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-14">circuit_list = []
-
-q1, q2 = cirq.NamedQubit("Alice"), cirq.NamedQubit("Bob")
-circuit_1 = cirq.Circuit()
-circuit_1.append(cirq.H(q1))
-circuit_1.append(cirq.CNOT(q1, q2))
-circuit_1.append(cirq.measure(q1, q2, key="m"))
-
-SVGCircuit(circuit_1)
-
-circuit_2 = cirq.Circuit()
-circuit_2.append(cirq.H(q1))
-circuit_2.append(cirq.CNOT(q2, q1))
-circuit_2.append(cirq.measure(q1, q2, key="m"))
-
-SVGCircuit(circuit_2)
-
-routed_circuit_1, _, _ = device.route_circuit(device.decompose_circuit(circuit_1))
-routed_circuit_2, _, _ = device.route_circuit(device.decompose_circuit(circuit_2))
-
-circuit_list.append(routed_circuit_1)
-circuit_list.append(routed_circuit_2)
-
-results = sampler.run_iqm_batch(circuit_list, repetitions=10)
-
-for result in results:
-    print(result.histogram(key="m"))</div>
+<div class="clipboard-copy-txt" id="cell-14">plot_metrics(
+    metric="fidelity_2qb_cliffords_averaged",
+    title="Two-qubit Gates Cliffords Averaged",
+    xlabel="Qubits",
+    ylabel="Fidelities",
+    data=calibration_data,
+    limits=[0.7, 1],
+)</div>
 </div>
 </div>
 </div>
@@ -1781,24 +1885,11 @@ for result in results:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="summary">Summary<a class="anchor-link" href="#summary">¶</a></h2><p>In this notebook we have demonstrated how to connect and run circuits on Helmi with Cirq using the cirq-on-iqm adapter.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="additional-reading">Additional Reading<a class="anchor-link" href="#additional-reading">¶</a></h2><ul>
-<li><a href="https://arxiv.org/pdf/2208.09460.pdf">Long-distance transmon coupler with CZ gate fidelity above 99.8%</a>. Paper by IQM describing the superconducting technology behind Helmi.</li>
-<li><a href="https://www.vttresearch.com/en/news-and-ideas/finlands-first-5-qubit-quantum-computer-now-operational">Helmi press release</a>.</li>
-<li><a href="https://github.com/iqm-finland/cirq-on-iqm">cirq-on-iqm Github page</a>.</li>
-<li><a href="https://iqm-finland.github.io/cirq-on-iqm/">cirq-on-iqm documentation</a>. We are running <code>11.13</code>.</li>
-<li><a href="https://docs.csc.fi/computing/quantum-computing/overview/">CSC documentation on Helmi</a>.</li>
-</ul>
+<h2 id="software-versions">Software versions<a class="anchor-link" href="#software-versions">¶</a></h2><div class="highlight"><pre><span></span>cirq-iqm<span class="o">==</span><span class="m">12</span>.2
+iqm-client<span class="o">==</span><span class="m">15</span>.3
+iqm-cortex-cli<span class="o">==</span><span class="m">5</span>.8
+qiskit-iqm<span class="o">==</span><span class="m">11</span>.10
+</pre></div>
 </div>
 </div>
 </div>
