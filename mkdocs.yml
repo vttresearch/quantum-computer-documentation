@@ -4,8 +4,8 @@ site_description: Instructions and user guides for commercial usage of VTT's Qua
 # Repository
 site_url: "https://vttresearch.github.io/quantum-computer-documentation/"
 
-site_author: VTT Technical Research Centre of Finland Ltd. 2023
-copyright: © VTT Technical Research Centre of Finland Ltd. 2023. All rights reserved.
+site_author: VTT Technical Research Centre of Finland Ltd. 2024
+copyright: © VTT Technical Research Centre of Finland Ltd. 2024. All rights reserved.
 nav:
   - Welcome: index.md
   - Helmi Quantum Computer: helmi.md
@@ -19,6 +19,7 @@ nav:
   - Calibration: calibration.md
   - FAQ: faq.md
   - Support: support.md
+  - Acknowledgment: acknowledgement.md
 theme:
   name: material
   language: en
