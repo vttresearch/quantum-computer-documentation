@@ -22,7 +22,7 @@ The LUMI [documentation](https://docs.lumi-supercomputer.eu/firststeps/loggingin
 
 ## Storage
 
-LUMI uses a Linux based parallel filesystem, utilising [lustre](https://www.lustre.org/). Access to differents parts of the file system are based on the projects you are associated with. LUMI's storage areas and their intended use cases are described [here](https://docs.lumi-supercomputer.eu/storage/).
+LUMI uses a Linux based parallel filesystem, utilising [lustre](https://www.lustre.org/). Access to different parts of the file system are based on the projects you are associated with. LUMI's storage areas and their intended use cases are described [here](https://docs.lumi-supercomputer.eu/storage/).
 
 ## Configuring the environment
 
@@ -43,11 +43,11 @@ Loading `helmi_qiskit` or `helmi_cirq` on LUMI comes with a preconfigured Python
 
 <center>
 
-| Package                                             | Version       |
-| --------------------------------------------------- | ------------- |
-| [iqm-client ](https://pypi.org/project/iqm-client/) | >=15.2 < 16.0 |
-| [qiskit-iqm](https://pypi.org/project/qiskit-iqm/)  | >=11.10 < 12.0   |
-| [cirq-iqm](https://pypi.org/project/qiskit-iqm/)    | >=12.2 < 13.0 |
+| Package                                             | Version        |
+| --------------------------------------------------- | -------------- |
+| [iqm-client ](https://pypi.org/project/iqm-client/) | >=15.2 < 16.0  |
+| [qiskit-iqm](https://pypi.org/project/qiskit-iqm/)  | >=11.10 < 12.0 |
+| [cirq-iqm](https://pypi.org/project/qiskit-iqm/)    | >=12.2 < 13.0  |
 
 </center>
 
