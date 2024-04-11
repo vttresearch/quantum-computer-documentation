@@ -19,6 +19,7 @@ nav:
   - Calibration: calibration.md
   - FAQ: faq.md
   - Support: support.md
+  - Acknowledgment: acknowledgement.md
 theme:
   name: material
   language: en
