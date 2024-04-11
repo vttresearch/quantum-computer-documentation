@@ -1,4 +1,4 @@
-Helmi is continously calibrated to ensure functionality. The calibration process involves a series of experiments, aimed at fine-tuning the parameters, necessary for controlling and measuring the qubits. In addition to calibration, we run benchmarks to obtain the figures of merit reflecting the current state of the quantum computer.
+Helmi is continuously calibrated to ensure functionality. The calibration process involves a series of experiments, aimed at fine-tuning the parameters, necessary for controlling and measuring the qubits. In addition to calibration, we run benchmarks to obtain the figures of merit reflecting the current state of the quantum computer.
 
 !!! note
 
@@ -32,7 +32,7 @@ The metrics contained in the quality metrics set are summarized below:
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | $T_1$ time (s)               | The $T_1$ time is called the longitudinal relaxation rate and describes how quickly the excited state of the qubit returns to its ground state.                                                                          |
 | $T_2$ time (s)               | The $T_2$ time is called the transverse relaxation rate and describes loss of coherence of a superposition state.                                                                                                        |
-| $T_2$-echo time (s)          | The $T_2$-echo time describes the loss of coherence of the superposition state of the qubit. It is more precise than the T2 Time as it is less susceptible to low-frequency noise.                                       |
+| $T_2$-echo time (s)          | The $T_2$-echo time describes the loss of coherence of the superposition state of the qubit. It is more precise than the $T_2$ Time as it is less susceptible to low-frequency noise.                                    |
 | Single-shot readout fidelity | Measures the average accuracy of distinguishing qubit states. The experiment prepares for 50% of the shots the qubit in the ground state $&#124; 0\rangle$ and for the other 50% in the excited state $&#124; 1\rangle$. |
 | Single-shot readout 10 error | The error in labelling the qubit state as $&#124; 0\rangle$ when it was prepared in state $&#124; 1\rangle$                                                                                                              |
 | Single-shot readout 01 error | The error in labelling the qubit state as $&#124; 1\rangle$ when it was prepared in state $&#124; 0\rangle$                                                                                                              |
