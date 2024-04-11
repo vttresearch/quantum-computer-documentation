@@ -2252,7 +2252,7 @@ plot_histogram(result.get_counts(), legend=["Circuit 1", "Circuit 2"])</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">pennylane</span> <span class="k">as</span> <span class="nn">qml</span>
 
-<span class="n">provider</span> <span class="o">=</span> <span class="n">IQMProvider</span><span class="p">(</span><span class="s2">"https://helmi.vtt.fi/cocos"</span><span class="p">)</span>
+<span class="n">provider</span> <span class="o">=</span> <span class="n">IQMProvider</span><span class="p">(</span><span class="s2">"https://qc.vtt.fi/helmi/cocos"</span><span class="p">)</span>
 <span class="n">backend</span> <span class="o">=</span> <span class="n">provider</span><span class="o">.</span><span class="n">get_backend</span><span class="p">()</span>
 
 
@@ -2272,7 +2272,7 @@ plot_histogram(result.get_counts(), legend=["Circuit 1", "Circuit 2"])</div>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-23">import pennylane as qml
 
-provider = IQMProvider("https://helmi.vtt.fi/cocos")
+provider = IQMProvider("https://qc.vtt.fi/helmi/cocos")
 backend = provider.get_backend()
 
 
