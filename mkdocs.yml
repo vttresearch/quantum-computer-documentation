@@ -14,6 +14,7 @@ nav:
     - examples/index.md
     - Introduction to Helmi with Qiskit: examples/intro-to-helmi-qiskit.ipynb
     - Introduction to Helmi with Cirq: examples/intro-to-helmi-cirq.ipynb
+    - Visualizing Quality Metrics: examples/visualize_quality_metrics.ipynb
   - Running on Helmi: running.md
   - Limitations: limitations.md
   - Calibration: calibration.md

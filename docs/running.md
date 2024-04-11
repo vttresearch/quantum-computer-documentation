@@ -78,7 +78,7 @@ The second queue is Helmi's internal job queue. It consists of a simple first-in
 
 The [LUMI Web interface](https://www.lumi.csc.fi) allows users to run on Helmi through their browser and use Jupyter notebooks for execution. Here is a brief guide, specifically for Helmi, however further details can be found [here](https://docs.csc.fi/computing/webinterface/).
 
-Once you have logged in select the `Jupyter` option. The session should be configured by selecting your project and the partition. The partitions should be `q_fiqci` and  `q_industry` for use with Helmi. The resource limitations are described [here](../limitations/). For use with Helmi some custom advanced settings should be configured.
+Once you have logged in select the `Jupyter` option. The session should be configured by selecting your project and the partition. The partitions should be `q_fiqci` and  `q_industry` for use with Helmi. The resource limitations are described [here](limitations.md). For use with Helmi some custom advanced settings should be configured.
 
 ```bash
 module use /appl/local/quantum/modulefiles
