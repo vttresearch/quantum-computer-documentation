@@ -10,3 +10,4 @@ Here you will find a list of examples of using VTT's Quantum computers. Addition
 ## General
 * [Introduction to Helmi with Qiskit](intro-to-helmi-qiskit.ipynb)
 * [Introduction to Helmi with Cirq](intro-to-helmi-cirq.ipynb)
+* [Visualizing Quality Metrics](visualize_quality_metrics.ipynb)
