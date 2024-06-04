@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -395,6 +395,21 @@
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viewing-the-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing the results
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Viewing the results">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#explicit-transpilation" class="md-nav__link">
@@ -1148,11 +1163,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="setup">Setup<a class="anchor-link" href="#setup">¶</a></h2><p>This notebook uses the following requirements.</p>
-<div class="highlight"><pre><span></span>qiskit-iqm==11.10
-iqm-client==15.3
+<div class="highlight"><pre><span></span>qiskit-iqm==13.7
+iqm-client==17.5
 qiskit[visualization]
 pylatexenc
-PennyLane-qiskit @ git+https://github.com/NordIQuEst/pennylane-qiskit@support-num-qubits
 </pre></div>
 </div>
 </div>
@@ -1428,7 +1442,7 @@ job_monitor(job)</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>You can also specify some backend arguments for running on Helmi. These are explained in the <a href="https://iqm-finland.github.io/qiskit-on-iqm/user_guide.html#installation">qiskit-on-iqm documentation</a>.</p>
+<p>The <code>execute</code> function from qiskit performs the quantum circuit transpilation by default. If you want to inspect the transpiled circuit, the <code>circuit_callback</code> option can be used. To run without automatic transpilation, <code>backend.run</code> can be used directly, in which case transpilation must be performed manually.</p>
 </div>
 </div>
 </div>
@@ -1451,22 +1465,126 @@ job_monitor(job)</div>
 </div>
 </clipboard-copy>
 </div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">print_circ</span><span class="p">(</span><span class="n">circuit</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">qc</span> <span class="ow">in</span> <span class="n">circuit</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">())</span>
+
+
+<span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">circuit_callback</span><span class="o">=</span><span class="n">print_circ</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Job ID: </span><span class="si">{</span><span class="n">job</span><span class="o">.</span><span class="n">job_id</span><span class="p">()</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Tracking execution of job:"</span><span class="p">)</span>
+<span class="n">job_monitor</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-7">def print_circ(circuit):
+    for qc in circuit:
+        print(qc.draw())
+
+
+job = execute(circuit, backend, shots=100, circuit_callback=print_circ)
+print(f"Job ID: {job.job_id()}.")
+print("Tracking execution of job:")
+job_monitor(job)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="viewing-the-results">Viewing the results<a class="anchor-link" href="#viewing-the-results">¶</a></h2><p>Results can be printed once the job has completed. If results are queried before the job has completed then an error will be returned.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy for="cell-8">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">job_id</span><span class="p">)</span>  <span class="c1"># The job id can be queried from the result</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+<span class="c1"># print(result.get_memory())</span>
+
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-8">result = job.result()
+print(result.job_id)  # The job id can be queried from the result
+print(result.get_counts())
+# print(result.get_memory())
+
+plot_histogram(result.get_counts())</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>You can also specify some backend arguments for running on Helmi. These are explained in the <a href="https://iqm-finland.github.io/qiskit-on-iqm/user_guide.html#installation">qiskit-on-iqm documentation</a>.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy for="cell-9">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># job = execute(</span>
 <span class="c1">#     circuit,</span>
 <span class="c1">#     backend,</span>
 <span class="c1">#     shots=100,</span>
 <span class="c1">#     calibration_set_id="c5a5e2d1-100b-42d4-a4fd-a49edfb9d176",</span>
-<span class="c1">#     circuit_duration_check=True,</span>
+<span class="c1">#     max_circuit_duration_over_t2=1.0,</span>
 <span class="c1">#     heralding_mode="zeros",</span>
+<span class="c1">#     circuit_callback=None,</span>
 <span class="c1"># )</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-7"># job = execute(
+<div class="clipboard-copy-txt" id="cell-9"># job = execute(
 #     circuit,
 #     backend,
 #     shots=100,
 #     calibration_set_id="c5a5e2d1-100b-42d4-a4fd-a49edfb9d176",
-#     circuit_duration_check=True,
+#     max_circuit_duration_over_t2=1.0,
 #     heralding_mode="zeros",
+#     circuit_callback=None,
 # )</div>
 </div>
 </div>
@@ -1493,7 +1611,7 @@ job_monitor(job)</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-8">
+<clipboard-copy for="cell-10">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -1507,7 +1625,7 @@ job_monitor(job)</div>
 <span class="nb">print</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
 <span class="c1"># old_job = backend.retrieve_job(job_id)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-8">status = job.status()
+<div class="clipboard-copy-txt" id="cell-10">status = job.status()
 print(status)
 # old_job = backend.retrieve_job(job_id)</div>
 </div>
@@ -1546,7 +1664,7 @@ print(status)
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-9">
+<clipboard-copy for="cell-11">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -1561,7 +1679,7 @@ print(status)
 <span class="p">)</span>
 <span class="n">transpiled_circuit</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s2">"mpl"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-9">transpiled_circuit = transpile(
+<div class="clipboard-copy-txt" id="cell-11">transpiled_circuit = transpile(
     circuit, backend=backend, layout_method="sabre", optimization_level=3
 )
 transpiled_circuit.draw("mpl")</div>
@@ -1590,7 +1708,7 @@ transpiled_circuit.draw("mpl")</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-10">
+<clipboard-copy for="cell-12">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -1616,7 +1734,7 @@ transpiled_circuit.draw("mpl")</div>
 
 <span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">initial_layout</span><span class="o">=</span><span class="n">qubit_mapping</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-10">qreg = QuantumRegister(2, "QB")
+<div class="clipboard-copy-txt" id="cell-12">qreg = QuantumRegister(2, "QB")
 circuit = QuantumCircuit(qreg, name="Bell pair circuit")
 circuit.h(qreg[0])
 circuit.cx(qreg[0], qreg[1])
@@ -1656,7 +1774,7 @@ job = execute(circuit, backend, shots=100, initial_layout=qubit_mapping)</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-11">
+<clipboard-copy for="cell-13">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -1673,7 +1791,7 @@ job = execute(circuit, backend, shots=100, initial_layout=qubit_mapping)</div>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-11">mapping = {}
+<div class="clipboard-copy-txt" id="cell-13">mapping = {}
 for qubit in circuit.qubits:
     index = circuit.find_bit(qubit).index
     mapping[index] = backend.index_to_qubit_name(index)
@@ -1705,7 +1823,7 @@ print(mapping)</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-12">
+<clipboard-copy for="cell-14">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -1718,7 +1836,7 @@ print(mapping)</div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">circuit_optimized</span> <span class="o">=</span> <span class="n">optimize_single_qubit_gates</span><span class="p">(</span><span class="n">transpiled_circuit</span><span class="p">)</span>
 <span class="n">circuit_optimized</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s2">"mpl"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-12">circuit_optimized = optimize_single_qubit_gates(transpiled_circuit)
+<div class="clipboard-copy-txt" id="cell-14">circuit_optimized = optimize_single_qubit_gates(transpiled_circuit)
 circuit_optimized.draw("mpl")</div>
 </div>
 </div>
@@ -1745,7 +1863,7 @@ circuit_optimized.draw("mpl")</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-13">
+<clipboard-copy for="cell-15">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -1762,7 +1880,7 @@ circuit_optimized.draw("mpl")</div>
 
 <span class="n">plot_histogram</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-13">result = job.result()
+<div class="clipboard-copy-txt" id="cell-15">result = job.result()
 print(result.job_id)  # The job id can be queried from the result
 print(result.get_counts())
 # print(result.get_memory())
@@ -1793,7 +1911,7 @@ plot_histogram(result.get_counts())</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-14">
+<clipboard-copy for="cell-16">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -1813,7 +1931,7 @@ plot_histogram(result.get_counts())</div>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">shots</span><span class="p">)</span>  <span class="c1"># Retrieving the number of requested shots.</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">exp_result</span><span class="o">.</span><span class="n">header</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-14">exp_result = result._get_experiment(circuit)
+<div class="clipboard-copy-txt" id="cell-16">exp_result = result._get_experiment(circuit)
 print("Job ID: ", job.job_id())  # Retrieving the submitted job id
 print(result.request.circuits)  # Retrieving the circuit request sent
 print(
@@ -1847,7 +1965,7 @@ print(exp_result.header)</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-15">
+<clipboard-copy for="cell-17">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -1864,7 +1982,7 @@ print(exp_result.header)</div>
 <span class="nb">print</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
 <span class="n">plot_histogram</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-15">from iqm.qiskit_iqm import IQMFakeAdonis
+<div class="clipboard-copy-txt" id="cell-17">from iqm.qiskit_iqm import IQMFakeAdonis
 
 fake_backend = IQMFakeAdonis()
 job = execute(circuit, fake_backend, shots=1000)
@@ -1895,7 +2013,7 @@ plot_histogram(job.result().get_counts())</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-16">
+<clipboard-copy for="cell-18">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -1907,7 +2025,7 @@ plot_histogram(job.result().get_counts())</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fake_backend</span><span class="o">.</span><span class="n">error_profile</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-16">print(fake_backend.error_profile)</div>
+<div class="clipboard-copy-txt" id="cell-18">print(fake_backend.error_profile)</div>
 </div>
 </div>
 </div>
@@ -1922,7 +2040,7 @@ plot_histogram(job.result().get_counts())</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-17">
+<clipboard-copy for="cell-19">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -1945,18 +2063,18 @@ plot_histogram(job.result().get_counts())</div>
 <span class="n">error_profile</span><span class="o">.</span><span class="n">t2s</span><span class="p">[</span><span class="s2">"QB4"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">14391.0</span>  <span class="c1"># in ns</span>
 <span class="n">error_profile</span><span class="o">.</span><span class="n">t2s</span><span class="p">[</span><span class="s2">"QB5"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">29012.0</span>  <span class="c1"># in ns</span>
 
-<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"phased_rx"</span><span class="p">][</span><span class="s2">"QB1"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0043</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"phased_rx"</span><span class="p">][</span><span class="s2">"QB2"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0018</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"phased_rx"</span><span class="p">][</span><span class="s2">"QB3"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0022</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"phased_rx"</span><span class="p">][</span><span class="s2">"QB4"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0037</span>
-<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"phased_rx"</span><span class="p">][</span><span class="s2">"QB5"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0024</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"prx"</span><span class="p">][</span><span class="s2">"QB1"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0043</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"prx"</span><span class="p">][</span><span class="s2">"QB2"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0018</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"prx"</span><span class="p">][</span><span class="s2">"QB3"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0022</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"prx"</span><span class="p">][</span><span class="s2">"QB4"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0037</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"prx"</span><span class="p">][</span><span class="s2">"QB5"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0024</span>
 
 <span class="n">error_profile</span><span class="o">.</span><span class="n">two_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"cz"</span><span class="p">][(</span><span class="s2">"QB1"</span><span class="p">,</span> <span class="s2">"QB3"</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.018</span>
 <span class="n">error_profile</span><span class="o">.</span><span class="n">two_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"cz"</span><span class="p">][(</span><span class="s2">"QB2"</span><span class="p">,</span> <span class="s2">"QB3"</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.033</span>
 <span class="n">error_profile</span><span class="o">.</span><span class="n">two_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"cz"</span><span class="p">][(</span><span class="s2">"QB3"</span><span class="p">,</span> <span class="s2">"QB4"</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.030</span>
 <span class="n">error_profile</span><span class="o">.</span><span class="n">two_qubit_gate_depolarizing_error_parameters</span><span class="p">[</span><span class="s2">"cz"</span><span class="p">][(</span><span class="s2">"QB3"</span><span class="p">,</span> <span class="s2">"QB5"</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.017</span>
 
-<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_durations</span><span class="p">[</span><span class="s2">"phased_rx"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">120</span>  <span class="c1"># in ns</span>
+<span class="n">error_profile</span><span class="o">.</span><span class="n">single_qubit_gate_durations</span><span class="p">[</span><span class="s2">"prx"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">120</span>  <span class="c1"># in ns</span>
 <span class="n">error_profile</span><span class="o">.</span><span class="n">two_qubit_gate_durations</span><span class="p">[</span><span class="s2">"cz"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">120</span>  <span class="c1"># in ns</span>
 
 <span class="n">error_profile</span><span class="o">.</span><span class="n">readout_errors</span><span class="p">[</span><span class="s2">"QB1"</span><span class="p">][</span><span class="s2">"0"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.03375</span>
@@ -1975,7 +2093,7 @@ plot_histogram(job.result().get_counts())</div>
 
 <span class="n">helmi_fake_backend</span> <span class="o">=</span> <span class="n">fake_backend</span><span class="o">.</span><span class="n">copy_with_error_profile</span><span class="p">(</span><span class="n">error_profile</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-17">error_profile = fake_backend.error_profile
+<div class="clipboard-copy-txt" id="cell-19">error_profile = fake_backend.error_profile
 error_profile.t1s["QB1"] = 38940.0  # in ns 3.8940
 error_profile.t1s["QB2"] = 25127.0  # in ns
 error_profile.t1s["QB3"] = 43322.0  # in ns
@@ -1988,18 +2106,18 @@ error_profile.t2s["QB3"] = 10050.0  # in ns
 error_profile.t2s["QB4"] = 14391.0  # in ns
 error_profile.t2s["QB5"] = 29012.0  # in ns
 
-error_profile.single_qubit_gate_depolarizing_error_parameters["phased_rx"]["QB1"] = 0.0043
-error_profile.single_qubit_gate_depolarizing_error_parameters["phased_rx"]["QB2"] = 0.0018
-error_profile.single_qubit_gate_depolarizing_error_parameters["phased_rx"]["QB3"] = 0.0022
-error_profile.single_qubit_gate_depolarizing_error_parameters["phased_rx"]["QB4"] = 0.0037
-error_profile.single_qubit_gate_depolarizing_error_parameters["phased_rx"]["QB5"] = 0.0024
+error_profile.single_qubit_gate_depolarizing_error_parameters["prx"]["QB1"] = 0.0043
+error_profile.single_qubit_gate_depolarizing_error_parameters["prx"]["QB2"] = 0.0018
+error_profile.single_qubit_gate_depolarizing_error_parameters["prx"]["QB3"] = 0.0022
+error_profile.single_qubit_gate_depolarizing_error_parameters["prx"]["QB4"] = 0.0037
+error_profile.single_qubit_gate_depolarizing_error_parameters["prx"]["QB5"] = 0.0024
 
 error_profile.two_qubit_gate_depolarizing_error_parameters["cz"][("QB1", "QB3")] = 0.018
 error_profile.two_qubit_gate_depolarizing_error_parameters["cz"][("QB2", "QB3")] = 0.033
 error_profile.two_qubit_gate_depolarizing_error_parameters["cz"][("QB3", "QB4")] = 0.030
 error_profile.two_qubit_gate_depolarizing_error_parameters["cz"][("QB3", "QB5")] = 0.017
 
-error_profile.single_qubit_gate_durations["phased_rx"] = 120  # in ns
+error_profile.single_qubit_gate_durations["prx"] = 120  # in ns
 error_profile.two_qubit_gate_durations["cz"] = 120  # in ns
 
 error_profile.readout_errors["QB1"]["0"] = 0.03375
@@ -2031,7 +2149,7 @@ helmi_fake_backend = fake_backend.copy_with_error_profile(error_profile)</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-18">
+<clipboard-copy for="cell-20">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -2045,7 +2163,7 @@ helmi_fake_backend = fake_backend.copy_with_error_profile(error_profile)</div>
 <span class="nb">print</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
 <span class="n">plot_histogram</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-18">job = execute(circuit, helmi_fake_backend, shots=1000)
+<div class="clipboard-copy-txt" id="cell-20">job = execute(circuit, helmi_fake_backend, shots=1000)
 print(job.result().get_counts())
 plot_histogram(job.result().get_counts())</div>
 </div>
@@ -2075,7 +2193,7 @@ plot_histogram(job.result().get_counts())</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-19">
+<clipboard-copy for="cell-21">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -2095,7 +2213,7 @@ plot_histogram(job.result().get_counts())</div>
 
 <span class="n">circuit_1</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s2">"mpl"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-19">circuits_list = []
+<div class="clipboard-copy-txt" id="cell-21">circuits_list = []
 
 circuit_1 = QuantumCircuit(2, name="Bell pair circuit")
 circuit_1.h(0)
@@ -2104,82 +2222,6 @@ circuit_1.measure_all()
 circuits_list.append(circuit_1)
 
 circuit_1.draw(output="mpl")</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy for="cell-20">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">circuit_2</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Reverse Bell pair circuit"</span><span class="p">)</span>
-<span class="n">circuit_2</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">circuit_2</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">circuit_2</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
-<span class="n">circuits_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">circuit_2</span><span class="p">)</span>
-
-<span class="n">circuit_2</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s2">"mpl"</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-20">circuit_2 = QuantumCircuit(2, name="Reverse Bell pair circuit")
-circuit_2.h(1)
-circuit_2.cx(1, 0)
-circuit_2.measure_all()
-circuits_list.append(circuit_2)
-
-circuit_2.draw(output="mpl")</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy for="cell-21">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Execute and monitor job</span>
-<span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span>
-    <span class="n">circuits_list</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">optimization_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">initial_layout</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Tracking execution of job:"</span><span class="p">)</span>
-<span class="n">job_monitor</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-21"># Execute and monitor job
-job = execute(
-    circuits_list, backend, shots=10, optimization_level=3, initial_layout=[0, 2]
-)
-print("Tracking execution of job:")
-job_monitor(job)</div>
 </div>
 </div>
 </div>
@@ -2204,13 +2246,89 @@ job_monitor(job)</div>
 </div>
 </clipboard-copy>
 </div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">circuit_2</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Reverse Bell pair circuit"</span><span class="p">)</span>
+<span class="n">circuit_2</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">circuit_2</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">circuit_2</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="n">circuits_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">circuit_2</span><span class="p">)</span>
+
+<span class="n">circuit_2</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s2">"mpl"</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-22">circuit_2 = QuantumCircuit(2, name="Reverse Bell pair circuit")
+circuit_2.h(1)
+circuit_2.cx(1, 0)
+circuit_2.measure_all()
+circuits_list.append(circuit_2)
+
+circuit_2.draw(output="mpl")</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy for="cell-23">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Execute and monitor job</span>
+<span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span>
+    <span class="n">circuits_list</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">optimization_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">initial_layout</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Tracking execution of job:"</span><span class="p">)</span>
+<span class="n">job_monitor</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-23"># Execute and monitor job
+job = execute(
+    circuits_list, backend, shots=10, optimization_level=3, initial_layout=[0, 2]
+)
+print("Tracking execution of job:")
+job_monitor(job)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy for="cell-24">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Get results</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
 
 <span class="c1"># Plot histograms</span>
 <span class="n">plot_histogram</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">(),</span> <span class="n">legend</span><span class="o">=</span><span class="p">[</span><span class="s2">"Circuit 1"</span><span class="p">,</span> <span class="s2">"Circuit 2"</span><span class="p">])</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-22"># Get results
+<div class="clipboard-copy-txt" id="cell-24"># Get results
 result = job.result()
 
 # Plot histograms
@@ -2240,7 +2358,7 @@ plot_histogram(result.get_counts(), legend=["Circuit 1", "Circuit 2"])</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-23">
+<clipboard-copy for="cell-25">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -2252,8 +2370,8 @@ plot_histogram(result.get_counts(), legend=["Circuit 1", "Circuit 2"])</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">pennylane</span> <span class="k">as</span> <span class="nn">qml</span>
 
-<span class="n">provider</span> <span class="o">=</span> <span class="n">IQMProvider</span><span class="p">(</span><span class="s2">"https://qc.vtt.fi/helmi/cocos"</span><span class="p">)</span>
-<span class="n">backend</span> <span class="o">=</span> <span class="n">provider</span><span class="o">.</span><span class="n">get_backend</span><span class="p">()</span>
+<span class="c1"># provider = IQMProvider("https://qc.vtt.fi/helmi/cocos")</span>
+<span class="c1"># backend = provider.get_backend()</span>
 
 
 <span class="n">dev</span> <span class="o">=</span> <span class="n">qml</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">"qiskit.remote"</span><span class="p">,</span> <span class="n">wires</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -2270,10 +2388,10 @@ plot_histogram(result.get_counts(), legend=["Circuit 1", "Circuit 2"])</div>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">circuit</span><span class="p">([</span><span class="mf">0.54</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">]))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-23">import pennylane as qml
+<div class="clipboard-copy-txt" id="cell-25">import pennylane as qml
 
-provider = IQMProvider("https://qc.vtt.fi/helmi/cocos")
-backend = provider.get_backend()
+# provider = IQMProvider("https://qc.vtt.fi/helmi/cocos")
+# backend = provider.get_backend()
 
 
 dev = qml.device("qiskit.remote", wires=5, backend=backend, shots=10)
@@ -2316,20 +2434,10 @@ print(circuit([0.54, 0.12]))</div>
 <li><a href="https://arxiv.org/pdf/2208.09460.pdf">Long-distance transmon coupler with CZ gate fidelity above 99.8%</a>. Paper by IQM describing the superconducting technology behind Helmi.</li>
 <li><a href="https://www.vttresearch.com/en/news-and-ideas/finlands-first-5-qubit-quantum-computer-now-operational">Helmi press release</a>.</li>
 <li><a href="https://github.com/iqm-finland/qiskit-on-iqm">qiskit-on-iqm Github page</a>.</li>
-<li><a href="https://iqm-finland.github.io/qiskit-on-iqm/">qiskit-on-iqm documentation</a>. We are running <code>11.10</code>.</li>
+<li><a href="https://iqm-finland.github.io/qiskit-on-iqm/">qiskit-on-iqm documentation</a>.</li>
 <li><a href="https://docs.csc.fi/computing/quantum-computing/overview/">CSC documentation on Helmi</a>.</li>
 <li><a href="https://docs.pennylane.ai/projects/qiskit/en/latest/">Pennylane-Qiskit documentation</a>.</li>
 </ul>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
@@ -2401,7 +2509,7 @@ print(circuit([0.54, 0.12]))</div>
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.footer", "toc.integrate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.081f42fc.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       

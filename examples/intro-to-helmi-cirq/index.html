@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -1088,8 +1088,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="setup">Setup<a class="anchor-link" href="#setup">¶</a></h2><p>This notebook uses the following requirements.</p>
-<div class="highlight"><pre><span></span>cirq-iqm==12.1
-iqm-client==15.3
+<div class="highlight"><pre><span></span>cirq-iqm==14.0
+iqm-client==17.5
 </pre></div>
 </div>
 </div>
@@ -1191,7 +1191,7 @@ device = sampler.device</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>We can also specify a <code>calibration_set_id</code> and whether to run with <code>circuit_duration_check</code> or not. The <code>circuit_duration_check</code> option when set to <code>True</code> disqualifies any circuits that are too long compared to the coherence time of the qubits.</p>
+<p>We can also specify a <code>calibration_set_id</code> and whether to run with <code>max_circuit_duration_over_t2</code> or not. The <code>max_circuit_duration_over_t2</code> option when set to <code>1.0</code> disqualifies any circuits that are too long compared to the coherence time of the qubits.</p>
 </div>
 </div>
 </div>
@@ -1216,15 +1216,15 @@ device = sampler.device</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">sampler</span> <span class="o">=</span> <span class="n">IQMSampler</span><span class="p">(</span>
     <span class="s2">"https://qc.vtt.fi/helmi/cocos"</span><span class="p">,</span>
-    <span class="n">calibration_set_id</span><span class="o">=</span><span class="s2">"c5a5e2d1-100b-42d4-a4fd-a49edfb9d176"</span><span class="p">,</span>
-    <span class="n">circuit_duration_check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">calibration_set_id</span><span class="o">=</span><span class="s2">"2318283e-3adf-4a88-a936-a33affde4af7"</span><span class="p">,</span>
+    <span class="n">max_circuit_duration_over_t2</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
     <span class="n">heralding_mode</span><span class="o">=</span><span class="s2">"zeros"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-3">sampler = IQMSampler(
     "https://qc.vtt.fi/helmi/cocos",
-    calibration_set_id="c5a5e2d1-100b-42d4-a4fd-a49edfb9d176",
-    circuit_duration_check=True,
+    calibration_set_id="2318283e-3adf-4a88-a936-a33affde4af7",
+    max_circuit_duration_over_t2=1.0,
     heralding_mode="zeros",
 )</div>
 </div>
@@ -1870,7 +1870,7 @@ for result in results:
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.footer", "toc.integrate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.081f42fc.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       

@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -1269,13 +1269,13 @@ from iqm.qiskit_iqm import IQMProvider</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">provider</span> <span class="o">=</span> <span class="n">IQMProvider</span><span class="p">(</span><span class="s2">"https://qc.vtt.fi/cocos"</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">provider</span> <span class="o">=</span> <span class="n">IQMProvider</span><span class="p">(</span><span class="s2">"https://qc.vtt.fi/helmi/cocos"</span><span class="p">)</span>
 <span class="n">backend</span> <span class="o">=</span> <span class="n">provider</span><span class="o">.</span><span class="n">get_backend</span><span class="p">()</span>
 
 <span class="c1"># If you receive an error you may need to set the IQM_TOKENS_FILE environment variable</span>
 <span class="c1"># os.environ["IQM_TOKENS_FILE"] = "/path/to/file"</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-3">provider = IQMProvider("https://qc.vtt.fi/cocos")
+<div class="clipboard-copy-txt" id="cell-3">provider = IQMProvider("https://qc.vtt.fi/helmi/cocos")
 backend = provider.get_backend()
 
 # If you receive an error you may need to set the IQM_TOKENS_FILE environment variable
@@ -1357,17 +1357,17 @@ print(calibration_data)</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">cal_set_id</span> <span class="o">=</span> <span class="s2">"1b7b8415-1ec6-41d5-8c11-9800c111612c"</span>
-<span class="n">calibration_data</span> <span class="o">=</span> <span class="n">get_calibration_data</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">client</span><span class="p">,</span> <span class="n">cal_set_id</span><span class="p">)</span>
-<span class="n">calibration_data</span> <span class="o">=</span> <span class="n">get_calibration_data</span><span class="p">(</span>
-    <span class="n">backend</span><span class="o">.</span><span class="n">client</span><span class="p">,</span> <span class="n">cal_set_id</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">cal_set_id</span><span class="si">}</span><span class="s2">.json"</span>
-<span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># cal_set_id = "1b7b8415-1ec6-41d5-8c11-9800c111612c"</span>
+<span class="c1"># calibration_data = get_calibration_data(backend.client, cal_set_id)</span>
+<span class="c1"># calibration_data = get_calibration_data(</span>
+<span class="c1">#     backend.client, cal_set_id, filename=f"{cal_set_id}.json"</span>
+<span class="c1"># )</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-5">cal_set_id = "1b7b8415-1ec6-41d5-8c11-9800c111612c"
-calibration_data = get_calibration_data(backend.client, cal_set_id)
-calibration_data = get_calibration_data(
-    backend.client, cal_set_id, filename=f"{cal_set_id}.json"
-)</div>
+<div class="clipboard-copy-txt" id="cell-5"># cal_set_id = "1b7b8415-1ec6-41d5-8c11-9800c111612c"
+# calibration_data = get_calibration_data(backend.client, cal_set_id)
+# calibration_data = get_calibration_data(
+#     backend.client, cal_set_id, filename=f"{cal_set_id}.json"
+# )</div>
 </div>
 </div>
 </div>
@@ -1961,7 +1961,7 @@ qiskit-iqm<span class="o">==</span><span class="m">11</span>.10
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.footer", "toc.integrate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.081f42fc.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
