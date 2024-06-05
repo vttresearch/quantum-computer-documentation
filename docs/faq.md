@@ -33,3 +33,7 @@ No, a large number of shots will not cause thermal excitations of the qubits.
 **Q: Can Pennylane be used on Helmi?**
 
 Yes, Pennylane can be used on Helmi through a [fork of the Pennylane-Qiskit package](https://github.com/NordIQuEst/pennylane-qiskit/tree/support-num-qubits). This is demonstrated in the [Introduction to Helmi with Qiskit example](examples/intro-to-helmi-qiskit.ipynb#pennylane-qiskit).
+
+**Q: Is Qiskit v1.0 supported on Helmi?**
+
+Qiskit 1.0 is not currently supported on Helmi. Please refer to the [v0.45.3 API documentation](https://docs.quantum.ibm.com/api/qiskit/0.45).
