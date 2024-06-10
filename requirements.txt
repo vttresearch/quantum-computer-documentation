@@ -7,3 +7,4 @@ jupyter_contrib_nbextensions
 notebook==6.4.12
 mkdocs-section-index
 pre-commit
+mkdocs-git-revision-date-localized-plugin

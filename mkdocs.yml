@@ -54,6 +54,7 @@ plugins:
     - mkdocs-jupyter:
           include_source: True
     - section-index
+    - git-revision-date-localized
 
 markdown_extensions:
   - footnotes
