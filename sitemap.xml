@@ -2,72 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://vttresearch.github.io/quantum-computer-documentation/</loc>
-         <lastmod>2024-06-05</lastmod>
+         <lastmod>2024-06-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vttresearch.github.io/quantum-computer-documentation/acknowledgement/</loc>
-         <lastmod>2024-06-05</lastmod>
+         <lastmod>2024-06-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vttresearch.github.io/quantum-computer-documentation/calibration/</loc>
-         <lastmod>2024-06-05</lastmod>
+         <lastmod>2024-06-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vttresearch.github.io/quantum-computer-documentation/faq/</loc>
-         <lastmod>2024-06-05</lastmod>
+         <lastmod>2024-06-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vttresearch.github.io/quantum-computer-documentation/helmi/</loc>
-         <lastmod>2024-06-05</lastmod>
+         <lastmod>2024-06-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vttresearch.github.io/quantum-computer-documentation/limitations/</loc>
-         <lastmod>2024-06-05</lastmod>
+         <lastmod>2024-06-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vttresearch.github.io/quantum-computer-documentation/lumi/</loc>
-         <lastmod>2024-06-05</lastmod>
+         <lastmod>2024-06-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vttresearch.github.io/quantum-computer-documentation/running/</loc>
-         <lastmod>2024-06-05</lastmod>
+         <lastmod>2024-06-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vttresearch.github.io/quantum-computer-documentation/support/</loc>
-         <lastmod>2024-06-05</lastmod>
+         <lastmod>2024-06-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vttresearch.github.io/quantum-computer-documentation/examples/</loc>
-         <lastmod>2024-06-05</lastmod>
+         <lastmod>2024-06-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vttresearch.github.io/quantum-computer-documentation/examples/advanced-helmi/</loc>
-         <lastmod>2024-06-05</lastmod>
+         <lastmod>2024-06-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vttresearch.github.io/quantum-computer-documentation/examples/intro-to-helmi-cirq/</loc>
-         <lastmod>2024-06-05</lastmod>
+         <lastmod>2024-06-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vttresearch.github.io/quantum-computer-documentation/examples/intro-to-helmi-qiskit/</loc>
-         <lastmod>2024-06-05</lastmod>
+         <lastmod>2024-06-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vttresearch.github.io/quantum-computer-documentation/examples/visualize_quality_metrics/</loc>
-         <lastmod>2024-06-05</lastmod>
+         <lastmod>2024-06-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
