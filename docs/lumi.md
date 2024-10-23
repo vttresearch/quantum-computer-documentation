@@ -45,15 +45,15 @@ Loading `helmi_qiskit` or `helmi_cirq` on LUMI comes with a preconfigured Python
 
 | Package                                             | Version        |
 | --------------------------------------------------- | -------------- |
-| [iqm-client ](https://pypi.org/project/iqm-client/) | >=15.2 < 16.0  |
-| [qiskit-iqm](https://pypi.org/project/qiskit-iqm/)  | >=11.10 < 12.0 |
-| [cirq-iqm](https://pypi.org/project/qiskit-iqm/)    | >=12.2 < 13.0  |
+| [iqm-client ](https://pypi.org/project/iqm-client/) | >=18.0 < 19.0  |
+| [qiskit-iqm](https://pypi.org/project/qiskit-iqm/)  | >=13.15 < 14.0 |
+| [cirq-iqm](https://pypi.org/project/qiskit-iqm/)    | >=14.4 < 15.0  |
 
 </center>
 
 Newer versions of the above Python packages can be installed and may work with Helmi, however these are currently unsupported and may lead to errors.
 
-As an alternative to the above, Python packages can be installed on top of `helmi_qiskit` or `helmi_cirq` into the Python user install directory by specifying `python -m pip install --user whatsapp`. This, however, may lead to increased dependency conflicts.
+As an alternative to the above, Python packages can be installed on top of `helmi_qiskit` or `helmi_cirq` into the Python user install directory by specifying `python -m pip install --user <username>`. This, however, may lead to increased dependency conflicts.
 
 <!-- Once LUMI uses a conda based tykky env we can recommend to users to create a virtual env with the --system-site-packages flag -->
 
