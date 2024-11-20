@@ -53,7 +53,7 @@ Loading `helmi_qiskit` or `helmi_cirq` on LUMI comes with a preconfigured Python
 
 Newer versions of the above Python packages can be installed and may work with Helmi, however these are currently unsupported and may lead to errors.
 
-As an alternative to the above, Python packages can be installed on top of `helmi_qiskit` or `helmi_cirq` into the Python user install directory by specifying `python -m pip install --user <username>`. This, however, may lead to increased dependency conflicts.
+As an alternative to the above, Python packages can be installed on top of `helmi_qiskit` or `helmi_cirq` into the Python user install directory by specifying `python -m pip install --user whatsapp`. This, however, may lead to increased dependency conflicts.
 
 <!-- Once LUMI uses a conda based tykky env we can recommend to users to create a virtual env with the --system-site-packages flag -->
 
