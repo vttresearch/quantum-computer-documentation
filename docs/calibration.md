@@ -1,22 +1,12 @@
 Helmi is continuously calibrated to ensure functionality. The calibration process involves a series of experiments, aimed at fine-tuning the parameters, necessary for controlling and measuring the qubits. In addition to calibration, we run benchmarks to obtain the figures of merit reflecting the current state of the quantum computer.
 
-!!! note
-
-    Calibration and benchmarking experiments are interleaved with regular user jobs in Helmi's job queue, as detailed in the [Running on Helmi](running.md) section. The calibration might therefore slightly increase the waiting time in the queue of regular user jobs.
-
 ### Calibration sequences
 
-To minimize the impact of calibration on user operations, we execute shorter calibration sequences during the day and a longer calibration run throughout the night.
+To minimize the impact of calibration on user operations, we calibrate Helmi at night, by running a specific sequence of experiments in order.
 
-**Short calibration**:
+**Calibration**:
 
-- Every 2 hours from 11 am to 11 pm
-- Adjusts qubit drive frequency, drive amplitude and readout threshold
-- Measures $T_1$, $T_2$, $T_2^*$ and readout accuracy
-
-**Extended calibration**:
-
-- Every day at 4 am
+- Every day at 2 am
 - Adjusts qubit drive frequency, amplitude fine-tuning and readout threshold
 - Measures $T_1$, $T_2$, $T_2^*$, readout accuracy, single- and two-qubit gate fidelities
 
@@ -49,20 +39,27 @@ Here is an example response from Helmi's API for the calibration and quality met
 
 ```json
 {
-  "calibration_set_id": "03436204-3588-4567-95ec-5a61acfd227d",
-  "quality_metric_set_id": "ec1298a0-43ce-43f2-b6d1-10c1fe750786",
+  "calibration_set_id": "5dae35ad-67d0-41eb-a73d-79e3828e2357",
+  "calibration_set_number_of_observations": 166,
+  "calibration_set_created_timestamp": "2024-11-26 03:03:10.359446+00:00",
+  "calibration_set_end_timestamp": "2024-11-26 03:03:10.542733+00:00",
+  "calibration_set_is_invalid": false,
+  "quality_metric_set_id": "e9d1c497-3485-4d9b-b176-2c0b100a5ccd",
+  "quality_metric_set_created_timestamp": "2024-11-26 03:03:10.496040+00:00",
+  "quality_metric_set_end_timestamp": "2024-11-26 03:03:10.569614+00:00",
+  "quality_metric_set_is_invalid": false,
   "metrics": {
-    "QB1.fidelity_1qb_gates_averaged": {
-      "value": "0.9971526901996984",
+    "metrics.ssro.measure.constant.QB1.fidelity": {
+      "value": "0.9525",
       "unit": "",
-      "uncertainty": "5.622242981254397e-05",
-      "timestamp": "2024-03-20T05:05:08.109836"
+      "uncertainty": "None",
+      "timestamp": "2024-11-26 05:03:10.403869+00:00"
     },
-    "TC-3-5.cz_gate_fidelity": {
-      "value": "0.9848983187049354",
+    "metrics.ssro.measure.constant.QB1.error_1_to_0": {
+      "value": "0.0525",
       "unit": "",
-      "uncertainty": "0.002603321013490276",
-      "timestamp": "2024-03-20T05:05:08.109836"
+      "uncertainty": "None",
+      "timestamp": "2024-11-26 05:03:10.403869+00:00"
     }
   }
 }
