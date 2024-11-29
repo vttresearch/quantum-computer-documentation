@@ -18,8 +18,6 @@ The command takes a number of arguments
 - `-c`: Requests that $n$ CPUs be allocated per process.
 - `-n`: Number of tasks to run in parallel. If greater than 1, a job may be assigned to multiple nodes.
 - `--partition`: The partition to run on. Should be `q_industry`.
-- `cmd`: The command to run. In this case `python qiskit_flip.py`
-
 
 Note, that the `srun` command is blocking, which means that you'll have to wait until your program terminates before `srun` returns and you can enter your next command. Alternatively you can also load a shell on the compute node to provide more flexibility. This can be done with the following command:
 

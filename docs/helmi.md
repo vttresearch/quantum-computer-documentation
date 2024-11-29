@@ -39,7 +39,13 @@ The coupler characteristics are given below. TC refers to tunable coupler.
 | --------------------------------- | ------ | ------ | ------ | ------ |
 | Two-qubit Gate Fidelities[^3] [%] | 96.4   | 95.9   | 94.6   | 97.5   |
 
-The PRX gate length and the CZ gate length is 120 [ns] respectively.
+The CZ gate length are:
+
+|                           | QB-3-1 | QB-3-2 | QB-3-4 | QB-3-5 |
+| ------------------------- | ------ | ------ | ------ | ------ |
+| CZ Gate Length [ns]       | 106.6  | 113.3  | 93.3   | 106.6  |
+
+The PRX Gate Length is 120 ns for all qubits.
 
 [^1]: [*Long-Distance Transmon Coupler with cz-Gate Fidelity above 99.8%, Marxer et al.*](https://doi.org/10.1103/PRXQuantum.4.010314)
 [^2]: Calculated via randomized benchmarking
