@@ -1,0 +1,26 @@
+name: Documentation Build Check
+on:
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  check-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Test documentation build
+        run: |
+          mkdocs build --strict --site-dir test
