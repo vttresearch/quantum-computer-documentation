@@ -16,7 +16,7 @@ To run arbitrary quantum circuits, a QPU needs to implement a universal gate set
 - Single-qubit gates: Phased-$RX$ gate (PRX)
 - Two-qubit gate: Controlled-$Z$ gate (CZ)
 
-MOVE Gates such as SWAP are not natively implemented on Helmi.  
+MOVE Gates are not natively implemented on Helmi.  
 Measurements are natively implemented as single-qubit measurements in the $Z$ basis. 
 
 ## Characteristics
