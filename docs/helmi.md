@@ -39,7 +39,7 @@ The coupler characteristics are given below. TC refers to tunable coupler.
 | --------------------------------- | ------ | ------ | ------ | ------ |
 | Two-qubit Gate Fidelities[^3] [%] | 96.4   | 95.9   | 94.6   | 97.5   |
 
-The CZ gate length are:
+The CZ gate length are (note that these gate lengths may vary):
 
 |                           | QB-3-1 | QB-3-2 | QB-3-4 | QB-3-5 |
 | ------------------------- | ------ | ------ | ------ | ------ |
