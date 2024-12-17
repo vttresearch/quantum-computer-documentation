@@ -2,7 +2,7 @@ Helmi is continuously calibrated to ensure functionality. The calibration proces
 
 ### Calibration sequences
 
-To minimize the impact of calibration on user operations, we calibrate Helmi at night, by running a specific sequence of experiments in order. Calibration and benchmarking experiments are interleaved with regular user jobs in Helmi's job queue, as detailed in the [Running on Helmi](running.md) section. The calibration might therefore slightly increase the waiting time in the queue of regular user jobs.
+To minimize the impact of calibration on user operations, we schedule the calibration of Helmi at 2AM, by running a specific sequence of experiments in order. Calibration and benchmarking experiments are interleaved with regular user jobs in Helmi's job queue, as detailed in the [Running on Helmi](running.md) section. The calibration might therefore slightly increase the waiting time in the queue of regular user jobs.
 
 **Calibration**:
 
