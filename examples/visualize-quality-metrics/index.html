@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://vttresearch.github.io/quantum-computer-documentation/examples/visualize-quality-metrics/">
       
       
+        <link rel="prev" href="../intro-to-helmi-cirq/">
+      
+      
+        <link rel="next" href="../advanced-helmi/">
       
       
       <link rel="icon" href="../../assets/favicon.ico">
@@ -262,17 +266,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           
@@ -294,7 +300,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Examples
@@ -347,10 +353,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../visualize_quality_metrics.ipynb" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Visualizing Quality Metrics
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -359,6 +385,113 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#importing-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importing Libraries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-the-data-from-the-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting the data from the API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting the data from the API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-the-iqm-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining the IQM Client
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plotting-the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plotting the data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readout-fidelities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Readout Fidelities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t_1-t_2-times" class="md-nav__link">
+    <span class="md-ellipsis">
+      $T_1$ &amp; $T_2$ Times
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#single-qubit-gate-fidelities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single qubit gate fidelities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-qubit-gate-fidelities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two qubit gate fidelities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software versions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
