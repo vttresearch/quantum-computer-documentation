@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -356,7 +356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/visualize_quality_metrics/" class="md-nav__link">
+      <a href="../examples/visualize_quality_metrics.ipynb" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -554,15 +554,15 @@
 <p><strong>Q: Is there any optimization applied during gate-to-pulse compilation?</strong></p>
 <p>No circuit optimization is performed after the circuit has been submitted in serialized form with the <a href="https://iqm-finland.github.io/iqm-client/">IQM client</a>. The gate-to-pulse compiler replaces each gate by the corresponding pulse and submits the pulses to the backend for execution.</p>
 <p><strong>Q: Is heralding enabled on Helmi?</strong></p>
-<p><a href="https://iqm-finland.github.io/iqm-client/api/iqm.iqm_client.iqm_client.HeraldingMode.html#iqm.iqm_client.iqm_client.HeraldingMode">Heralding</a> is an optional feature that allows for post-selection of shots, to filter out runs where one or more qubits were not in the ground state at the beginning of the circuit execution. The feature is currently unavailable on Helmi.</p>
+<p><a href="https://iqm-finland.github.io/iqm-client/api/iqm.iqm_client.iqm_client.HeraldingMode.html#iqm.iqm_client.iqm_client.HeraldingMode">Heralding</a> is an optional feature that allows for post-selection of shots, to filter out runs where one or more qubits were not in the ground state at the beginning of the circuit execution. This feature is available in VTT quantum computers but it is not officially supported by IQM and your mileage may vary.</p>
 <p><strong>Q: What is the time-to-execution after a job has been scheduled on Helmi?</strong></p>
-<p>An overhead of 10 seconds can be expected. The largest overhead is introduced by compiling the pulses to instructions for the control electronics and the upload to the instruments.</p>
+<p>An overhead of 6 seconds can be expected. The largest overhead is introduced by compiling the pulses to instructions for the control electronics and the upload to the instruments.</p>
 <p><strong>Q: Does the number of shots affect the calibration of Helmi?</strong></p>
 <p>No, a large number of shots will not cause thermal excitations of the qubits.</p>
 <p><strong>Q: Can Pennylane be used on Helmi?</strong></p>
-<p>Yes, Pennylane can be used on Helmi through a <a href="https://github.com/NordIQuEst/pennylane-qiskit/tree/support-num-qubits">fork of the Pennylane-Qiskit package</a>. This is demonstrated in the <a href="../examples/intro-to-helmi-qiskit/#pennylane-qiskit">Introduction to Helmi with Qiskit example</a>.</p>
+<p>No, Pennylane is not currently supported on Helmi; but pennylane-qiskit may or may not work.</p>
 <p><strong>Q: Is Qiskit v1.0 supported on Helmi?</strong></p>
-<p>Qiskit 1.0 is not currently supported on Helmi. Please refer to the <a href="https://docs.quantum.ibm.com/api/qiskit/0.45">v0.45.3 API documentation</a>.</p>
+<p>Qiskit 1.1 is now supported on Helmi. Please refer to the <a href="https://docs.quantum.ibm.com/api/qiskit/1.1">v1.1.2 API documentation</a>.</p>
 
 
 
@@ -583,7 +583,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 5, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 17, 2024</span>
   </span>
 
     
@@ -646,7 +646,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.footer", "toc.integrate"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       

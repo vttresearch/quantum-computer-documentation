@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -354,7 +354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/visualize_quality_metrics/" class="md-nav__link">
+      <a href="../examples/visualize_quality_metrics.ipynb" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -593,8 +593,11 @@
 
 
 <h1 id="running-on-helmi">Running on Helmi</h1>
-<p>To run interactive jobs on LUMI the <a href="https://slurm.schedmd.com/srun.html"><code>srun</code></a> command can be used</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>srun<span class="w"> </span>--account<span class="o">=</span>project_&lt;id&gt;<span class="w"> </span>-t<span class="w"> </span><span class="m">0</span>:02:00<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>--partition<span class="w"> </span>q_industry<span class="w"> </span>python<span class="w"> </span>qiskit_flip.py
+<p>To run interactive jobs on LUMI the <a href="https://slurm.schedmd.com/srun.html"><code>srun</code></a> command can be used. First we allocate resources for the job:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>salloc<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span><span class="m">00</span>:15:00<span class="w"> </span>--job-name<span class="o">=</span>&lt;job_name&gt;<span class="w"> </span>--account<span class="o">=</span>project_&lt;id&gt;<span class="w"> </span>--partition<span class="w"> </span>q_industry
+</span></code></pre></div>
+Then we run our script</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>srun<span class="w"> </span>python<span class="w"> </span>qiskit_flip.py
 </span></code></pre></div>
 <p>The command takes a number of arguments</p>
 <ul>
@@ -603,10 +606,9 @@
 <li><code>-c</code>: Requests that <span class="arithmatex">\(n\)</span> CPUs be allocated per process.</li>
 <li><code>-n</code>: Number of tasks to run in parallel. If greater than 1, a job may be assigned to multiple nodes.</li>
 <li><code>--partition</code>: The partition to run on. Should be <code>q_industry</code>.</li>
-<li><code>cmd</code>: The command to run. In this case <code>python qiskit_flip.py</code></li>
 </ul>
 <p>Note, that the <code>srun</code> command is blocking, which means that you'll have to wait until your program terminates before <code>srun</code> returns and you can enter your next command. Alternatively you can also load a shell on the compute node to provide more flexibility. This can be done with the following command:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>srun<span class="w"> </span>--account<span class="o">=</span>project_&lt;id&gt;<span class="w"> </span>-t<span class="w"> </span><span class="m">0</span>:15:00<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>--partition<span class="w"> </span>q_industry<span class="w"> </span>--pty<span class="w"> </span>bash
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>srun<span class="w"> </span>--account<span class="o">=</span>project_&lt;id&gt;<span class="w"> </span>-t<span class="w"> </span><span class="m">0</span>:15:00<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>--partition<span class="w"> </span>q_industry<span class="w"> </span>--pty<span class="w"> </span>bash
 </span></code></pre></div>
 <p>This command loads a bash shell on the compute node with access to Helmi. After getting the shell, you may need to load your modules again.</p>
 <div class="admonition note">
@@ -614,23 +616,23 @@
 <p>The LUMI Web-interface is now available at <a href="https://www.lumi.csc.fi">www.lumi.csc.fi</a>. You can run jupyter-notebooks through this web interface. <a href="#web-interface">See the section below for further details</a>.</p>
 </div>
 <p>To run longer experiments, it is advisable to use <a href="https://slurm.schedmd.com/sbatch.html"><code>sbatch</code></a> which executes batch jobs on LUMI.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/bin/bash</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1">#SBATCH --job-name=helmijob     # Job name</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">#SBATCH --account=project_&lt;id&gt;  # Project for billing</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1">#SBATCH --partition=q_industry  # Partition (queue) name</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1">#SBATCH --ntasks=1              # One task (process)</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1">#SBATCH --cpus-per-task=1       # Number of cores (threads)</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1">#SBATCH --time=00:15:00         # Run time (hh:mm:ss)</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>module<span class="w"> </span>use<span class="w"> </span>/appl/local/quantum/modulefiles
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="c1"># uncomment correct line:</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1"># module load helmi_qiskit</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="c1"># or</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="c1"># module load helmi_cirq</span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>python<span class="w"> </span>your_python_script.py
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1">#SBATCH --job-name=helmijob     # Job name</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1">#SBATCH --account=project_&lt;id&gt;  # Project for billing</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1">#SBATCH --partition=q_industry  # Partition (queue) name</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1">#SBATCH --ntasks=1              # One task (process)</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1">#SBATCH --cpus-per-task=1       # Number of cores (threads)</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1">#SBATCH --time=00:15:00         # Run time (hh:mm:ss)</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>module<span class="w"> </span>use<span class="w"> </span>/appl/local/quantum/modulefiles
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="c1"># uncomment correct line:</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c1"># module load helmi_qiskit</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1"># or</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="c1"># module load helmi_cirq</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>python<span class="w"> </span>your_python_script.py
 </span></code></pre></div>
 <h2 id="job-queues">Job queues</h2>
 <p>Running on Helmi through LUMI involves using two queues. The first one is the <a href="https://slurm.schedmd.com/documentation.html">SLURM</a> queue on LUMI. Users interact with SLURM using the <code>srun</code> or <code>sbatch</code> commands for job submission and can fetch details about the queue state using <code>squeue -p &lt;partition&gt;</code>. The state of the partition can be viewed with <code>sinfo -p &lt;partition&gt;</code>.</p>
@@ -653,8 +655,8 @@
 <h2 id="web-interface">Web-interface</h2>
 <p>The <a href="https://www.lumi.csc.fi">LUMI Web interface</a> allows users to run on Helmi through their browser and use Jupyter notebooks for execution. Here is a brief guide, specifically for Helmi, however further details can be found <a href="https://docs.csc.fi/computing/webinterface/">here</a>.</p>
 <p>Once you have logged in select the <code>Jupyter</code> option. The session should be configured by selecting your project and the partition. The partitions should be <code>q_fiqci</code> and  <code>q_industry</code> for use with Helmi. The resource limitations are described <a href="../limitations/">here</a>. For use with Helmi some custom advanced settings should be configured.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>module<span class="w"> </span>use<span class="w"> </span>/appl/local/quantum/modulefiles
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>module<span class="w"> </span>load<span class="w"> </span>helmi_qiskit
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>module<span class="w"> </span>use<span class="w"> </span>/appl/local/quantum/modulefiles
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>module<span class="w"> </span>load<span class="w"> </span>helmi_qiskit
 </span></code></pre></div>
 <p>This pictures below demonstrate the process.</p>
 <p><img alt="lumi-www-1" src="../img/lumi-www-1.png" /></p>
@@ -679,7 +681,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 11, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 17, 2024</span>
   </span>
 
     
@@ -740,7 +742,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.footer", "toc.integrate"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
