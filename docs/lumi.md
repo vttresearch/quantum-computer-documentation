@@ -45,9 +45,9 @@ Loading `helmi_qiskit` or `helmi_cirq` on LUMI comes with a preconfigured Python
 
 | Package                                             | Version        |
 | --------------------------------------------------- | -------------- |
-| [iqm-client ](https://pypi.org/project/iqm-client/) | >=15.2 < 16.0  |
-| [qiskit-iqm](https://pypi.org/project/qiskit-iqm/)  | >=11.10 < 12.0 |
-| [cirq-iqm](https://pypi.org/project/qiskit-iqm/)    | >=12.2 < 13.0  |
+| [iqm-client ](https://pypi.org/project/iqm-client/) | >=20.0 < 21.0  |
+| [qiskit-iqm](https://pypi.org/project/qiskit-iqm/)  | >=15.1 < 16.0  |
+| [cirq-iqm](https://pypi.org/project/qiskit-iqm/)    | >=15.1 < 16.0  |
 
 </center>
 

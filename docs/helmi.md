@@ -16,8 +16,8 @@ To run arbitrary quantum circuits, a QPU needs to implement a universal gate set
 - Single-qubit gates: Phased-$RX$ gate (PRX)
 - Two-qubit gate: Controlled-$Z$ gate (CZ)
 
+MOVE Gates are not natively implemented on Helmi.
 Measurements are natively implemented as single-qubit measurements in the $Z$ basis.
-
 
 ## Characteristics
 
@@ -39,7 +39,13 @@ The coupler characteristics are given below. TC refers to tunable coupler.
 | --------------------------------- | ------ | ------ | ------ | ------ |
 | Two-qubit Gate Fidelities[^3] [%] | 96.4   | 95.9   | 94.6   | 97.5   |
 
-The PRX gate length and the CZ gate length is 120 [ns] respectively.
+The CZ gate length are (note that these gate lengths may vary):
+
+|                           | QB-3-1 | QB-3-2 | QB-3-4 | QB-3-5 |
+| ------------------------- | ------ | ------ | ------ | ------ |
+| CZ Gate Length [ns]       | 106.6  | 113.3  | 93.3   | 106.6  |
+
+The PRX Gate Length is 120 ns for all qubits.
 
 [^1]: [*Long-Distance Transmon Coupler with cz-Gate Fidelity above 99.8%, Marxer et al.*](https://doi.org/10.1103/PRXQuantum.4.010314)
 [^2]: Calculated via randomized benchmarking

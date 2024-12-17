@@ -1,26 +1,19 @@
 Helmi is continuously calibrated to ensure functionality. The calibration process involves a series of experiments, aimed at fine-tuning the parameters, necessary for controlling and measuring the qubits. In addition to calibration, we run benchmarks to obtain the figures of merit reflecting the current state of the quantum computer.
 
-!!! note
-
-    Calibration and benchmarking experiments are interleaved with regular user jobs in Helmi's job queue, as detailed in the [Running on Helmi](running.md) section. The calibration might therefore slightly increase the waiting time in the queue of regular user jobs.
-
 ### Calibration sequences
 
-To minimize the impact of calibration on user operations, we execute shorter calibration sequences during the day and a longer calibration run throughout the night.
+To minimize the impact of calibration on user operations, we schedule the calibration of Helmi at 2AM, by running a specific sequence of experiments in order. Calibration and benchmarking experiments are interleaved with regular user jobs in Helmi's job queue, as detailed in the [Running on Helmi](running.md) section. The calibration might therefore slightly increase the waiting time in the queue of regular user jobs.
 
-**Short calibration**:
+**Calibration**:
 
-- Every 2 hours from 11 am to 11 pm
-- Adjusts qubit drive frequency, drive amplitude and readout threshold
-- Measures $T_1$, $T_2$, $T_2^*$ and readout accuracy
-
-**Extended calibration**:
-
-- Every day at 4 am
+- Every day at 2 am
 - Adjusts qubit drive frequency, amplitude fine-tuning and readout threshold
+- Recalibrates CZ Gate, Virtual Z rotations and performs randomized benchmarking.
 - Measures $T_1$, $T_2$, $T_2^*$, readout accuracy, single- and two-qubit gate fidelities
 
 A calibration sequence produces what is called a `calibration_set`. This is a set of device parameters, which the quantum computer is currently using to execute quantum circuits. It is identified via a `calibration_set_id`, a unique identifier for the specific `calibration_set`. Usually, when submitting quantum circuits, the most up-to-date calibration set is used, however, it is possible to use a specific `calibration_set_id`. This can be useful for testing the degradation of the performance of our quantum computers.
+
+The `calibration set` sometimes contains observations with the suffix `par=d2`. This refers to the distance of the qubit pairs that can run in parallel, which is necessary to avoid neighbouring qubit pairs of the same group.
 
 ### Quality metrics set
 
@@ -49,21 +42,44 @@ Here is an example response from Helmi's API for the calibration and quality met
 
 ```json
 {
-  "calibration_set_id": "03436204-3588-4567-95ec-5a61acfd227d",
-  "quality_metric_set_id": "ec1298a0-43ce-43f2-b6d1-10c1fe750786",
-  "metrics": {
-    "QB1.fidelity_1qb_gates_averaged": {
-      "value": "0.9971526901996984",
-      "unit": "",
-      "uncertainty": "5.622242981254397e-05",
-      "timestamp": "2024-03-20T05:05:08.109836"
+  'calibration_set_id': '15c05aaf-e1d4-4020-85b4-c3f234c41b7b',
+  'calibration_set_dut_label': 'M127_W49_A02_J11',
+  'calibration_set_number_of_observations': 166,
+  'calibration_set_created_timestamp': '2024-11-29 02:55:42.607368+00:00',
+  'calibration_set_end_timestamp': '2024-11-29 02:55:42.771789+00:00',
+  'calibration_set_is_invalid': False,
+  'quality_metric_set_id': '8ce54091-78d9-4823-ae67-7a65b407c221',
+  'quality_metric_set_dut_label': 'M127_W49_A02_J11',
+  'quality_metric_set_created_timestamp': '2024-11-29 02:55:42.740569+00:00',
+  'quality_metric_set_end_timestamp': '2024-11-29 02:55:42.797275+00:00',
+  'quality_metric_set_is_invalid': False,
+  'metrics':
+  {
+    'measure_ssro_fidelity':
+    {
+      'QB1':
+      {
+        'value': '0.949',
+        'unit': '',
+        'uncertainty': 'None',
+        'timestamp': '2024-11-29 04:55:42.648725+00:00',
+        'implementation': 'constant'
+      },
+    'QB2':
+    {
+      'value': '0.9427499999999999',
+      'unit': '',
+      'uncertainty': 'None',
+      'timestamp': '2024-11-29 04:55:42.648725+00:00',
+      'implementation': 'constant'
     },
-    "TC-3-5.cz_gate_fidelity": {
-      "value": "0.9848983187049354",
-      "unit": "",
-      "uncertainty": "0.002603321013490276",
-      "timestamp": "2024-03-20T05:05:08.109836"
+    'QB3':
+    {
+      'value': '0.95125',
+      'unit': '',
+      'uncertainty': 'None',
+      'timestamp': '2024-11-29 04:55:42.648725+00:00',
+      'implementation': 'constant'
     }
-  }
-}
+...
 ```

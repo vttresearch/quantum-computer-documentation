@@ -7,22 +7,13 @@ hide:
 
 There are a number of limitations on Helmi that need to be taken into account when writing quantum circuits.
 
-**Queue length**
-
-To ensure manageable wait times, the job queue can accommodate up to **100 sequential jobs**.
-Jobs when the queue reached its limit will be denied, triggering the following error message from the IQM client:
-
-```bash
-ClientAuthenticationError: Authentication failed: {"detail":"Job rejected: Too many circuits in queue"}
-```
-
 **Batch size**
 
-On our Helmi system, quantum circuits within a batch are processed sequentially. To prevent extensive queue occupation by large batches, we have set a maximum limit of **20 circuits per batch**.
-Jobs submitting batches with more than 20 circuits will be rejected and the IQM client will return the following error
+On our Helmi system, quantum circuits within a batch are processed sequentially. To prevent extensive queue occupation by large batches, we have set a maximum limit of **200 circuits per batch**.
+Jobs submitting batches with more than 200 circuits will be rejected and the IQM client will return the following error
 
 ```bash
-ClientAuthenticationError: Authentication failed: {"detail":"Too many circuits X in batch (max: 20)"}
+ClientConfigurationError: Client configuration error: {"error":"Request contains x circuits in batch which is larger than maximum number of circuits (200) allowed per batch for device Helmi."}
 ```
 
 Here, 'X' denotes the actual number of circuits attempted to be included in the batch.

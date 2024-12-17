@@ -1,9 +1,14 @@
 # Running on Helmi
 
-To run interactive jobs on LUMI the [`srun`](https://slurm.schedmd.com/srun.html) command can be used
+To run interactive jobs on LUMI the [`srun`](https://slurm.schedmd.com/srun.html) command can be used. First we allocate resources for the job:
 
 ```bash
-srun --account=project_<id> -t 0:02:00 -c 1 -n 1 --partition q_industry python qiskit_flip.py
+salloc -n 1 -c 1 -t 00:15:00 --job-name=<job_name> --account=project_<id> --partition q_industry
+```
+Then we run our script
+
+```bash
+srun python qiskit_flip.py
 ```
 
 The command takes a number of arguments
@@ -13,8 +18,6 @@ The command takes a number of arguments
 - `-c`: Requests that $n$ CPUs be allocated per process.
 - `-n`: Number of tasks to run in parallel. If greater than 1, a job may be assigned to multiple nodes.
 - `--partition`: The partition to run on. Should be `q_industry`.
-- `cmd`: The command to run. In this case `python qiskit_flip.py`
-
 
 Note, that the `srun` command is blocking, which means that you'll have to wait until your program terminates before `srun` returns and you can enter your next command. Alternatively you can also load a shell on the compute node to provide more flexibility. This can be done with the following command:
 
