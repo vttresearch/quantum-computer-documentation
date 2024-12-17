@@ -23,4 +23,4 @@ jobs:
 
       - name: Test documentation build
         run: |
-          mkdocs build --site-dir test
+          mkdocs build --strict --site-dir test
